@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>くじ引き抽選会 - 改良版</title>
+    <style>
+        :root {
+            --primary-color: #ff6b35;
+            --secondary-color: #f7931e;
+            --accent-color: #ffe135;
+            --success-color: #4ecdc4;
+            --danger-color: #ff4757;
+            --text-color: #333;
+            --bg-gradient: linear-gradient(135deg, #ff4081 0%, #ff6ec7 25%, #7c4dff 50%, #2196f3 75%, #00bcd4 100%);
+            --border-radius: 25px;
+            --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: var(--bg-gradient);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        .title {
+            background: linear-gradient(45deg, #ffeb3b, #fff176, #ffff8d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 3.5em;
+            font-weight: bold;
+            text-align: center;
+            margin: 40px 0 30px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            position: relative;
+            animation: titlePulse 3s ease-in-out infinite;
+        }
+        
+        @keyframes titlePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .main-content {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: var(--box-shadow);
+            backdrop-filter: blur(10px);
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            border: 5px solid var(--primary-color);
+        }
+        
+        .input-section {
+            margin-bottom: 40px;
+        }
+        
+        .input-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        .input-group {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            gap: 10px;
+        }
+        
+        .name-input {
+            padding: 15px 20px;
+            border: 3px solid var(--primary-color);
+            border-radius: var(--border-radius);
+            font-size: 18px;
+            outline: none;
+            transition: var(--transition);
+            width: 250px;
+            text-align: center;
+        }
+        
+        .name-input:focus {
+            border-color: var(--secondary-color);
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(247, 147, 30, 0.3);
+        }
+        
+        .name-input.error {
+            border-color: var(--danger-color);
+            animation: shake 0.5s ease-in-out;
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+        
+        .add-btn {
+            padding: 15px 30px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .add-btn:hover:not(:disabled) {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .add-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .csv-upload-section {
+            margin-top: 20px;
+        }
+        
+        .csv-upload-btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: linear-gradient(45deg, var(--success-color), #44a08d);
+            color: white;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: var(--transition);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .csv-upload-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .names-display {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 30px;
+            min-height: 60px;
+            align-items: center;
+        }
+        
+        .name-tag {
+            background: linear-gradient(45deg, #ff9a9e, #fecfef);
+            color: var(--text-color);
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            animation: bounceIn 0.5s ease-out;
+            position: relative;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .name-tag:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+        
+        .remove-btn {
+            background: var(--danger-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        
+        .remove-btn:hover {
+            transform: scale(1.2);
+        }
+        
+        .empty-message {
+            color: #666;
+            font-style: italic;
+            font-size: 1.1em;
+        }
+        
+        .lottery-box {
+            width: 200px;
+            height: 250px;
+            margin: 30px auto;
+            position: relative;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .lottery-box.spinning {
+            animation: lotterySpinShake 2s ease-in-out;
+        }
+        
+        .box-body {
+            width: 100%;
+            height: 200px;
+            background: 
+                linear-gradient(90deg, 
+                    #ffd700 0%, #ffd700 20%,
+                    #ff4444 20%, #ff4444 40%,
+                    #ffd700 40%, #ffd700 60%,
+                    #ff4444 60%, #ff4444 80%,
+                    #ffd700 80%, #ffd700 100%
+                );
+            border-radius: 10px;
+            position: relative;
+            box-shadow: var(--box-shadow);
+            border: 3px solid #333;
+        }
+        
+        .box-top {
+            width: 220px;
+            height: 30px;
+            background: #333;
+            border-radius: 15px;
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .box-hole {
+            width: 60px;
+            height: 60px;
+            background: #000;
+            border-radius: 50%;
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: inset 0 5px 15px rgba(0, 0, 0, 0.8);
+        }
+        
+        .question-mark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3em;
+            color: #ff4444;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .start-btn {
+            padding: 20px 50px;
+            font-size: 1.8em;
+            font-weight: bold;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            margin-top: 20px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        .start-btn:hover:not(:disabled) {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+        
+        .start-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+            background: #ccc;
+        }
+        
+        .result-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.5s ease;
+            z-index: 1000;
+        }
+        
+        .result-popup.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .result-content {
+            background: linear-gradient(135deg, #fff, #f8f9fa);
+            padding: 50px;
+            border-radius: 30px;
+            text-align: center;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+            border: 5px solid var(--primary-color);
+            position: relative;
+            max-width: 500px;
+            width: 90%;
+        }
+        
+        .result-title {
+            font-size: 2.5em;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .winner-name {
+            font-size: 3.5em;
+            color: var(--text-color);
+            margin: 30px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: bold;
+        }
+        
+        .congratulations {
+            font-size: 1.5em;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        .close-btn {
+            padding: 15px 40px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-size: 1.2em;
+            font-weight: bold;
+            transition: var(--transition);
+        }
+        
+        .close-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .error-message {
+            color: var(--danger-color);
+            font-size: 0.9em;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        .error-message.show {
+            display: block;
+            animation: fadeIn 0.3s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes bounceIn {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes lotterySpinShake {
+            0% { transform: rotate(0deg) scale(1); }
+            10% { transform: rotate(10deg) scale(1.1) translateY(-10px); }
+            20% { transform: rotate(-15deg) scale(1.2) translateY(-15px); }
+            30% { transform: rotate(20deg) scale(1.3) translateY(-20px); }
+            40% { transform: rotate(-25deg) scale(1.2) translateY(-15px); }
+            50% { transform: rotate(30deg) scale(1.4) translateY(-25px); }
+            60% { transform: rotate(-20deg) scale(1.3) translateY(-20px); }
+            70% { transform: rotate(15deg) scale(1.2) translateY(-15px); }
+            80% { transform: rotate(-10deg) scale(1.1) translateY(-10px); }
+            90% { transform: rotate(5deg) scale(1.05) translateY(-5px); }
+            100% { transform: rotate(0deg) scale(1) translateY(0px); }
+        }
+        
+        /* レスポンシブ */
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2.5em;
+            }
+            
+            .main-content {
+                margin: 0 10px;
+                padding: 20px;
+            }
+            
+            .input-group {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .name-input {
+                width: 100%;
+                max-width: 300px;
+                margin-bottom: 10px;
+            }
+            
+            .lottery-box {
+                width: 150px;
+                height: 200px;
+            }
+            
+            .box-body {
+                height: 150px;
+            }
+        }
+        
+        /* アクセシビリティ */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+        
+        /* フォーカス表示 */
+        button:focus,
+        input:focus {
+            outline: 2px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">🎪 大抽選会 🎪</h1>
+        
+        <main class="main-content">
+            <section class="input-section">
+                <h2>🎯 参加者を追加してね！</h2>
+                <div class="input-group">
+                    <label for="nameInput" class="sr-only">参加者の名前</label>
+                    <input 
+                        type="text" 
+                        id="nameInput" 
+                        class="name-input"
+                        placeholder="名前を入力してください" 
+                        maxlength="20"
+                        aria-describedby="nameError"
+                    >
+                    <button class="add-btn" id="addBtn" type="button">追加！</button>
+                </div>
+                <div id="nameError" class="error-message" role="alert"></div>
+                
+                <div class="csv-upload-section">
+                    <label for="csvFile" class="csv-upload-btn">
+                        📁 CSVファイルから一括追加
+                        <input type="file" id="csvFile" accept=".csv" style="display: none;">
+                    </label>
+                    <div style="font-size: 0.9em; color: #666; margin-top: 10px;">
+                        ※CSVの1列目に名前を入力してください
+                    </div>
+                </div>
+            </section>
+            
+            <section class="names-display" id="namesDisplay" aria-label="参加者一覧">
+                <div class="empty-message">まだ参加者がいません 😊</div>
+            </section>
+            
+            <div class="lottery-box" id="lotteryBox" role="button" tabindex="0" aria-label="抽選ボックス">
+                <div class="box-top"></div>
+                <div class="box-hole"></div>
+                <div class="box-body">
+                    <div class="question-mark">?</div>
+                </div>
+            </div>
+            
+            <button class="start-btn" id="startBtn" type="button" disabled>
+                🎲 抽選スタート！
+            </button>
+        </main>
+    </div>
+    
+    <div class="result-popup" id="resultPopup" role="dialog" aria-labelledby="resultTitle" aria-modal="true">
+        <div class="result-content">
+            <h2 id="resultTitle" class="result-title">🎉 当選者発表！ 🎉</h2>
+            <div class="winner-name" id="winnerName" aria-live="polite"></div>
+            <div class="congratulations">✨ おめでとうございます！ ✨</div>
+            <button class="close-btn" id="closeBtn" type="button">閉じる</button>
+        </div>
+    </div>
+
+    <script>
+        // 設定オブジェクト
+        const CONFIG = {
+            MIN_PARTICIPANTS: 2,
+            MAX_NAME_LENGTH: 20,
+            ANIMATION_DURATION: 3000,
+            PARTICLE_COUNT: 20,
+            STORAGE_KEY: 'lottery_participants'
+        };
+
+        // メインクラス
+        class LotteryApp {
+            constructor() {
+                this.participants = [];
+                this.isAnimating = false;
+                this.initializeElements();
+                this.bindEvents();
+                this.loadFromStorage();
+                this.updateUI();
+            }
+
+            initializeElements() {
+                this.elements = {
+                    nameInput: document.getElementById('nameInput'),
+                    addBtn: document.getElementById('addBtn'),
+                    csvFile: document.getElementById('csvFile'),
+                    namesDisplay: document.getElementById('namesDisplay'),
+                    startBtn: document.getElementById('startBtn'),
+                    lotteryBox: document.getElementById('lotteryBox'),
+                    resultPopup: document.getElementById('resultPopup'),
+                    winnerName: document.getElementById('winnerName'),
+                    closeBtn: document.getElementById('closeBtn'),
+                    nameError: document.getElementById('nameError')
+                };
+            }
+
+            bindEvents() {
+                this.elements.addBtn.addEventListener('click', () => this.addParticipant());
+                this.elements.nameInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') this.addParticipant();
+                });
+                this.elements.csvFile.addEventListener('change', (e) => this.handleCSVUpload(e));
+                this.elements.startBtn.addEventListener('click', () => this.startLottery());
+                this.elements.closeBtn.addEventListener('click', () => this.closeResult());
+                this.elements.lotteryBox.addEventListener('click', () => this.startLottery());
+                this.elements.lotteryBox.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        this.startLottery();
+                    }
+                });
+
+                // ESCキーでポップアップを閉じる
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && this.elements.resultPopup.classList.contains('show')) {
+                        this.closeResult();
+                    }
+                });
+            }
+
+            validateName(name) {
+                const trimmedName = name.trim();
+                
+                if (!trimmedName) {
+                    return { valid: false, message: '名前を入力してください' };
+                }
+                
+                if (trimmedName.length > CONFIG.MAX_NAME_LENGTH) {
+                    return { valid: false, message: `名前は${CONFIG.MAX_NAME_LENGTH}文字以内で入力してください` };
+                }
+                
+                if (this.participants.some(p => p.toLowerCase() === trimmedName.toLowerCase())) {
+                    return { valid: false, message: 'この名前は既に追加されています' };
+                }
+                
+                // 特殊文字チェック（基本的な文字のみ許可）
+                if (!/^[a-zA-Zあ-んア-ン一-龯0-9\s\-_]+$/.test(trimmedName)) {
+                    return { valid: false, message: '使用できない文字が含まれています' };
+                }
+                
+                return { valid: true, name: trimmedName };
+            }
+
+            showError(message) {
+                this.elements.nameError.textContent = message;
+                this.elements.nameError.classList.add('show');
+                this.elements.nameInput.classList.add('error');
+                
+                setTimeout(() => {
+                    this.elements.nameError.classList.remove('show');
+                    this.elements.nameInput.classList.remove('error');
+                }, 3000);
+            }
+
+            addParticipant() {
+                const validation = this.validateName(this.elements.nameInput.value);
+                
+                if (!validation.valid) {
+                    this.showError(validation.message);
+                    return;
+                }
+
+                this.participants.push(validation.name);
+                this.elements.nameInput.value = '';
+                this.updateUI();
+                this.saveToStorage();
+                
+                // 成功フィードバック
+                this.elements.nameInput.style.borderColor = 'var(--success-color)';
+                setTimeout(() => {
+                    this.elements.nameInput.style.borderColor = '';
+                }, 1000);
+            }
+
+            removeParticipant(index) {
+                if (index >= 0 && index < this.participants.length) {
+                    this.participants.splice(index, 1);
+                    this.updateUI();
+                    this.saveToStorage();
+                }
+            }
+
+            updateUI() {
+                this.updateNamesDisplay();
+                this.updateStartButton();
+            }
+
+            updateNamesDisplay() {
+                if (this.participants.length === 0) {
+                    this.elements.namesDisplay.innerHTML = '<div class="empty-message">まだ参加者がいません 😊</div>';
+                    return;
+                }
+
+                // セキュアなDOM生成
+                this.elements.namesDisplay.innerHTML = '';
+                this.participants.forEach((name, index) => {
+                    const nameTag = document.createElement('div');
+                    nameTag.className = 'name-tag';
+                    nameTag.setAttribute('role', 'button');
+                    nameTag.setAttribute('tabindex', '0');
+                    nameTag.setAttribute('aria-label', `参加者: ${name}。削除するには×ボタンを押してください`);
+                    
+                    const nameText = document.createElement('span');
+                    nameText.textContent = name;
+                    
+                    const removeBtn = document.createElement('button');
+                    removeBtn.className = 'remove-btn';
+                    removeBtn.textContent = '×';
+                    removeBtn.setAttribute('aria-label', `${name}を削除`);
+                    removeBtn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        this.removeParticipant(index);
+                    });
+                    
+                    nameTag.appendChild(nameText);
+                    nameTag.appendChild(removeBtn);
+                    this.elements.namesDisplay.appendChild(nameTag);
+                });
+            }
+
+            updateStartButton() {
+                const canStart = this.participants.length >= CONFIG.MIN_PARTICIPANTS && !this.isAnimating;
+                this.elements.startBtn.disabled = !canStart;
+                
+                if (this.participants.length < CONFIG.MIN_PARTICIPANTS) {
+                    this.elements.startBtn.textContent = `🎲 参加者を${CONFIG.MIN_PARTICIPANTS}人以上追加してください`;
+                } else if (this.isAnimating) {
+                    this.elements.startBtn.textContent = '🎲 抽選中...';
+                } else {
+                    this.elements.startBtn.textContent = '🎲 抽選スタート！';
+                }
+            }
+
+            async startLottery() {
+                if (this.participants.length < CONFIG.MIN_PARTICIPANTS || this.isAnimating) return;
+
+                this.isAnimating = true;
+                this.updateStartButton();
+
+                // アニメーション開始
+                this.elements.lotteryBox.classList.add('spinning');
+                
+                // 抽選処理を非同期で実行
+                await this.performLotteryAnimation();
+                
+                // アニメーション終了
+                this.elements.lotteryBox.classList.remove('spinning');
+                
+                // 結果表示
+                const winner = this.selectWinner();
+                this.showResult(winner);
+                
+                this.isAnimating = false;
+                this.updateStartButton();
+            }
+
+            async performLotteryAnimation() {
+                return new Promise(resolve => {
+                    setTimeout(resolve, CONFIG.ANIMATION_DURATION);
+                });
+            }
+
+            selectWinner() {
+                const randomIndex = Math.floor(Math.random() * this.participants.length);
+                return this.participants[randomIndex];
+            }
+
+            showResult(winner) {
+                this.elements.winnerName.textContent = winner;
+                this.elements.resultPopup.classList.add('show');
+                
+                // フォーカス管理
+                this.elements.closeBtn.focus();
+            }
+
+            closeResult() {
+                this.elements.resultPopup.classList.remove('show');
+                this.elements.startBtn.focus();
+            }
+
+            async handleCSVUpload(event) {
+                const file = event.target.files[0];
+                if (!file) return;
+
+                try {
+                    const text = await this.readFileAsText(file);
+                    const lines = text.split('\n').filter(line => line.trim());
+                    let addedCount = 0;
+
+                    for (const line of lines) {
+                        const name = line.split(',')[0].trim();
+                        const validation = this.validateName(name);
+                        
+                        if (validation.valid) {
+                            this.participants.push(validation.name);
+                            addedCount++;
+                        }
+                    }
+
+                    if (addedCount > 0) {
+                        this.updateUI();
+                        this.saveToStorage();
+                        alert(`${addedCount}人の参加者を追加しました！`);
+                    } else {
+                        alert('新しい参加者が見つかりませんでした。');
+                    }
+                } catch (error) {
+                    console.error('CSV読み込みエラー:', error);
+                    alert('CSVファイルの読み込みに失敗しました。');
+                }
+
+                // ファイル入力をリセット
+                event.target.value = '';
+            }
+
+            readFileAsText(file) {
+                return new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+                    reader.onload = e => resolve(e.target.result);
+                    reader.onerror = reject;
+                    reader.readAsText(file);
+                });
+            }
+
+            saveToStorage() {
+                try {
+                    localStorage.setItem(CONFIG.STORAGE_KEY, JSON.stringify(this.participants));
+                } catch (error) {
+                    console.warn('ローカルストレージへの保存に失敗しました:', error);
+                }
+            }
+
+            loadFromStorage() {
+                try {
+                    const stored = localStorage.getItem(CONFIG.STORAGE_KEY);
+                    if (stored) {
+                        this.participants = JSON.parse(stored);
+                    }
+                } catch (error) {
+                    console.warn('ローカルストレージからの読み込みに失敗しました:', error);
+                    this.participants = [];
+                }
+            }
+        }
+
+        // アプリケーション初期化
+        document.addEventListener('DOMContentLoaded', () => {
+            new LotteryApp();
+        });
+    </script>
+</body>
+</html>
