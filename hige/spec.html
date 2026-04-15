@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex">
-<title>髭脱毛LP 仕様書 | Private Salon &amp;N</title>
+<title>髭脱毛LP 仕様書 v2 | Private Salon &amp;N</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@400;700;900&display=swap" rel="stylesheet">
@@ -19,15 +19,7 @@
     --spec-accent: #1a1a1a;
     --spec-gold: #c9a84c;
     --spec-warn: #e76f51;
-    --spec-code-bg: #1a1a1a;
-    --spec-code-text: #c9a84c;
-    --lp-dark: #0d0d0d;
-    --lp-dark2: #1a1a1a;
-    --lp-gold: #c9a84c;
-    --lp-gold-dark: #a88a33;
-    --lp-text: #e8e8e8;
-    --lp-muted: #888;
-    --lp-line-green: #00b900;
+    --spec-good: #2d6a4f;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -45,7 +37,7 @@
     color: #fff;
     padding: 40px 44px;
     border-radius: 12px;
-    margin-bottom: 32px;
+    margin-bottom: 28px;
     border-left: 6px solid var(--spec-gold);
   }
   .doc-header .eyebrow {
@@ -63,32 +55,44 @@
     margin-bottom: 8px;
   }
   .doc-header .subtitle { color: #bbb; font-size: 14px; }
-  .meta-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-    margin-top: 28px;
+  .version-badge {
+    display: inline-block;
+    background: var(--spec-gold);
+    color: var(--spec-accent);
+    padding: 4px 14px;
+    border-radius: 4px;
+    font-weight: 900;
+    font-size: 12px;
+    letter-spacing: 2px;
+    margin-left: 10px;
+    vertical-align: middle;
   }
-  .meta-item {
-    background: rgba(255,255,255,0.04);
-    border-left: 2px solid var(--spec-gold);
-    padding: 10px 14px;
-  }
-  .meta-item .label {
-    font-size: 10px;
-    color: var(--spec-gold);
-    letter-spacing: 1.5px;
-    font-weight: 700;
-    margin-bottom: 4px;
-  }
-  .meta-item .value { font-size: 13px; font-weight: 600; }
 
-  /* ===== LP Overview Card ===== */
+  /* ===== Changelog ===== */
+  .changelog {
+    background: #fff7ed;
+    border: 1px solid #fbc98a;
+    border-left: 4px solid var(--spec-warn);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin-bottom: 28px;
+  }
+  .changelog h3 {
+    color: var(--spec-warn);
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    margin-bottom: 10px;
+  }
+  .changelog ul { margin: 0 0 0 20px; font-size: 13px; }
+  .changelog li { margin-bottom: 4px; }
+  .changelog li strong { color: var(--spec-accent); }
+
+  /* ===== LP Overview ===== */
   .overview {
     background: var(--spec-card);
     border-radius: 12px;
-    padding: 32px 36px;
-    margin-bottom: 32px;
+    padding: 28px 32px;
+    margin-bottom: 28px;
     border: 1px solid var(--spec-border);
   }
   .overview h2 {
@@ -96,74 +100,66 @@
     letter-spacing: 2px;
     color: var(--spec-gold);
     font-weight: 700;
-    margin-bottom: 18px;
-    padding-bottom: 10px;
+    margin-bottom: 14px;
+    padding-bottom: 8px;
     border-bottom: 2px solid var(--spec-accent);
   }
   .overview-row {
     display: grid;
     grid-template-columns: 140px 1fr;
     gap: 16px;
-    padding: 10px 0;
+    padding: 8px 0;
     border-bottom: 1px dashed var(--spec-border);
-    font-size: 14px;
+    font-size: 13px;
   }
   .overview-row:last-child { border-bottom: none; }
-  .overview-row .k { font-weight: 700; color: var(--spec-text-mid); font-size: 13px; }
-  .overview-row .v { color: var(--spec-text); }
-  .palette { display: inline-flex; gap: 8px; vertical-align: middle; margin-left: 6px; }
-  .swatch {
-    display: inline-block;
-    width: 28px; height: 28px;
-    border-radius: 4px;
-    border: 1px solid var(--spec-border);
-    vertical-align: middle;
-  }
-  .swatch-label { font-size: 11px; color: var(--spec-text-muted); margin-left: 4px; vertical-align: middle; }
+  .overview-row .k { font-weight: 700; color: var(--spec-text-mid); font-size: 12px; }
+  .palette { display: inline-flex; gap: 6px; align-items: center; }
+  .swatch { width: 22px; height: 22px; border-radius: 3px; border: 1px solid var(--spec-border); }
 
   /* ===== Section Card ===== */
   .section-card {
     background: var(--spec-card);
     border: 1px solid var(--spec-border);
     border-radius: 12px;
-    margin-bottom: 28px;
+    margin-bottom: 22px;
     overflow: hidden;
   }
   .section-head {
     background: var(--spec-accent);
     color: #fff;
-    padding: 18px 28px;
+    padding: 16px 24px;
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 14px;
   }
   .section-num {
-    width: 46px; height: 46px;
+    width: 42px; height: 42px;
     background: var(--spec-gold);
     color: var(--spec-accent);
     font-weight: 900;
     display: grid;
     place-items: center;
     border-radius: 6px;
-    font-size: 16px;
+    font-size: 15px;
     flex-shrink: 0;
   }
-  .section-title-main { font-size: 18px; font-weight: 700; }
-  .section-title-sub { font-size: 12px; color: var(--spec-gold); letter-spacing: 1.5px; margin-top: 2px; }
+  .section-title-main { font-size: 17px; font-weight: 700; }
+  .section-title-sub { font-size: 11px; color: var(--spec-gold); letter-spacing: 1.5px; margin-top: 2px; }
 
-  .section-body { padding: 28px 32px; }
+  .section-body { padding: 24px 28px; }
   .section-body h3 {
-    font-size: 13px;
+    font-size: 12px;
     color: var(--spec-gold);
     font-weight: 700;
     letter-spacing: 1.5px;
-    margin: 22px 0 10px;
-    padding-bottom: 6px;
+    margin: 18px 0 8px;
+    padding-bottom: 5px;
     border-bottom: 1px solid var(--spec-border);
   }
   .section-body h3:first-child { margin-top: 0; }
   .section-body p { font-size: 14px; margin-bottom: 8px; }
-  .section-body ul { margin: 8px 0 12px 22px; font-size: 14px; }
+  .section-body ul { margin: 8px 0 10px 22px; font-size: 13px; }
   .section-body li { margin-bottom: 4px; }
 
   /* ===== Copy Examples ===== */
@@ -189,38 +185,37 @@
     line-height: 1.5;
   }
   .copy-sub {
-    font-size: 14px;
+    font-size: 13px;
     color: var(--spec-text-mid);
     margin-top: 6px;
     line-height: 1.7;
   }
   .copy-cta {
     display: inline-block;
-    background: var(--lp-line-green);
+    background: #00b900;
     color: #fff;
     padding: 8px 18px;
     border-radius: 100px;
     font-weight: 700;
-    font-size: 13px;
+    font-size: 12px;
     margin-top: 8px;
   }
-  .copy-cta.gold { background: var(--spec-gold); color: var(--spec-accent); }
 
   /* ===== Wireframe ===== */
   .wireframe {
     background: #f3f2ed;
     border: 1px dashed #c8c6be;
     border-radius: 8px;
-    padding: 20px;
-    margin: 14px 0 4px;
+    padding: 18px;
+    margin: 12px 0 4px;
   }
   .wireframe svg { width: 100%; height: auto; display: block; }
   .wf-caption { font-size: 11px; color: var(--spec-text-muted); margin-top: 6px; text-align: center; }
 
   /* ===== Tables ===== */
   table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 10px 0; }
-  th { background: var(--spec-accent); color: var(--spec-gold); text-align: left; padding: 10px 14px; font-weight: 700; }
-  td { padding: 10px 14px; border-bottom: 1px solid var(--spec-border); vertical-align: top; }
+  th { background: var(--spec-accent); color: var(--spec-gold); text-align: left; padding: 9px 12px; font-weight: 700; font-size: 12px; }
+  td { padding: 9px 12px; border-bottom: 1px solid var(--spec-border); vertical-align: top; font-size: 12px; }
   tr:nth-child(even) td { background: #faf9f4; }
 
   /* ===== Image Guide ===== */
@@ -228,96 +223,73 @@
     background: var(--spec-accent);
     color: #fff;
     border-radius: 12px;
-    padding: 36px;
-    margin-top: 40px;
+    padding: 32px;
+    margin-top: 36px;
   }
-  .img-guide h2 {
-    color: var(--spec-gold);
-    font-size: 14px;
-    letter-spacing: 2.5px;
-    margin-bottom: 8px;
-  }
-  .img-guide h1 {
-    font-family: 'Noto Serif JP', serif;
-    font-size: 26px;
-    font-weight: 900;
-    margin-bottom: 24px;
-  }
+  .img-guide h2 { color: var(--spec-gold); font-size: 14px; letter-spacing: 2.5px; margin-bottom: 8px; }
+  .img-guide h1 { font-family: 'Noto Serif JP', serif; font-size: 24px; font-weight: 900; margin-bottom: 20px; }
   .img-item {
     background: rgba(255,255,255,0.04);
     border-left: 3px solid var(--spec-gold);
-    padding: 20px 24px;
+    padding: 18px 22px;
     border-radius: 0 8px 8px 0;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
   }
-  .img-item h4 {
-    color: var(--spec-gold);
-    font-size: 14px;
-    margin-bottom: 4px;
-    letter-spacing: 1px;
-  }
-  .img-item .usage { font-size: 12px; color: #aaa; margin-bottom: 12px; }
+  .img-item h4 { color: var(--spec-gold); font-size: 13px; margin-bottom: 4px; letter-spacing: 1px; }
+  .img-item .usage { font-size: 11px; color: #aaa; margin-bottom: 10px; }
   .prompt-block {
     background: #000;
     color: #a8ff78;
-    padding: 16px 18px;
+    padding: 14px 16px;
     border-radius: 6px;
     font-family: 'SF Mono', Monaco, Consolas, monospace;
-    font-size: 12px;
+    font-size: 11px;
     line-height: 1.7;
-    margin: 10px 0;
+    margin: 8px 0;
     white-space: pre-wrap;
     word-break: break-word;
   }
-  .prompt-tips { font-size: 11px; color: #ccc; margin-top: 6px; }
+  .prompt-tips { font-size: 10px; color: #ccc; margin-top: 4px; }
+  .free-source {
+    background: rgba(45,106,79,0.15);
+    border-left: 3px solid var(--spec-good);
+    padding: 12px 16px;
+    margin-top: 8px;
+    font-size: 11px;
+    color: #bbb;
+    border-radius: 0 4px 4px 0;
+  }
+  .free-source a { color: var(--spec-gold); text-decoration: none; }
+  .free-source a:hover { text-decoration: underline; }
 
-  /* ===== Utility ===== */
-  .warn-badge {
-    display: inline-block;
-    background: var(--spec-warn);
-    color: #fff;
-    font-size: 10px;
-    font-weight: 700;
-    padding: 2px 8px;
-    border-radius: 3px;
-    margin-left: 6px;
-    letter-spacing: 1px;
-  }
-  .good-badge {
-    display: inline-block;
-    background: #2d6a4f;
-    color: #fff;
-    font-size: 10px;
-    font-weight: 700;
-    padding: 2px 8px;
-    border-radius: 3px;
-    margin-left: 6px;
-    letter-spacing: 1px;
-  }
+  /* ===== Badges ===== */
+  .badge-new { background: var(--spec-good); color: #fff; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 3px; margin-left: 6px; letter-spacing: 1px; }
+  .badge-del { background: #999; color: #fff; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 3px; margin-left: 6px; letter-spacing: 1px; text-decoration: line-through; }
+  .badge-edit { background: var(--spec-warn); color: #fff; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 3px; margin-left: 6px; letter-spacing: 1px; }
+
   .toc {
     background: var(--spec-card);
     border: 1px solid var(--spec-border);
-    border-radius: 12px;
-    padding: 20px 28px;
-    margin-bottom: 32px;
-    font-size: 13px;
+    border-radius: 10px;
+    padding: 16px 24px;
+    margin-bottom: 28px;
+    font-size: 12px;
   }
   .toc a {
     color: var(--spec-text-mid);
     text-decoration: none;
-    margin-right: 20px;
-    line-height: 2.2;
+    margin-right: 16px;
+    line-height: 2;
     white-space: nowrap;
   }
   .toc a:hover { color: var(--spec-gold); text-decoration: underline; }
 
   @media (max-width: 768px) {
-    .meta-grid { grid-template-columns: 1fr; }
     .overview-row { grid-template-columns: 1fr; gap: 4px; }
-    .doc-header { padding: 28px 24px; }
-    .doc-header h1 { font-size: 24px; }
-    .section-body { padding: 20px 18px; }
-    .img-guide { padding: 24px 18px; }
+    .doc-header { padding: 24px 18px; }
+    .doc-header h1 { font-size: 22px; }
+    .section-body { padding: 18px 16px; }
+    .img-guide { padding: 20px 14px; }
   }
 </style>
 </head>
@@ -327,628 +299,489 @@
 <!-- ============ DOC HEADER ============ -->
 <div class="doc-header">
   <div class="eyebrow">LP SPECIFICATION · PRIVATE SALON &amp;N</div>
-  <h1>髭脱毛LP 仕様書</h1>
+  <h1>髭脱毛LP 仕様書<span class="version-badge">V2</span></h1>
   <div class="subtitle">40〜50代男性向け / Meta広告配信用 / 白髪ラストチャンス訴求</div>
-  <div class="meta-grid">
-    <div class="meta-item"><div class="label">CLIENT</div><div class="value">Private Salon &amp;N（渋谷）</div></div>
-    <div class="meta-item"><div class="label">AUDIENCE</div><div class="value">40〜50代男性・自己投資層</div></div>
-    <div class="meta-item"><div class="label">CHANNEL</div><div class="value">Meta広告 → LP → LINE予約</div></div>
-    <div class="meta-item"><div class="label">PRIMARY CTA</div><div class="value">LINE予約（空き状況確認）</div></div>
-    <div class="meta-item"><div class="label">KPI TARGET</div><div class="value">初回体験CVR 5〜8%</div></div>
-    <div class="meta-item"><div class="label">CREATED</div><div class="value">2026-04-15</div></div>
-  </div>
+</div>
+
+<!-- ============ CHANGELOG ============ -->
+<div class="changelog">
+  <h3>v2 改訂履歴（2026-04-15）</h3>
+  <ul>
+    <li><strong>S1 Headerを削除</strong> — LP内ヘッダーはユーザーが見ないため不要</li>
+    <li><strong>S2 Heroを全面改訂</strong> — 左右分割レイアウト廃止 → Gemini生成の縦長1枚絵 + オーバーレイテキスト構成へ</li>
+    <li><strong>セクションタイトルからメタ英語ラベル削除</strong> — 「PAIN POINTS」「WHY US」「SOCIAL PROOF」等を除去し、本文そのものが見出しとして機能する設計に</li>
+    <li><strong>番号「01/02/03」を極小化</strong> — 大きな番号を止め、中身の文章を主役に（参考: メンズリゼ / tonandc の Merit 表記）</li>
+    <li><strong>電話CTA完全削除</strong> — LINE一本化でCTA分散を防止</li>
+    <li><strong>S7 お客様の声 → Before/After スライダーに変更</strong> — メンズリゼ型の部位タブ + ドラッグ比較ギミックを採用</li>
+    <li><strong>セクション間の区切り方を「曖昧な連続性」に</strong> — 背景色変化・オーバーラップ・パララックスで1枚のLP感を出す</li>
+    <li><strong>画像はフリー素材優先方針に変更</strong> — AI生成はHeroと施術室内観に限定、その他は写真AC/Unsplashから</li>
+  </ul>
 </div>
 
 <!-- ============ TOC ============ -->
 <div class="toc">
-  <strong style="display:block;margin-bottom:8px;font-size:12px;color:var(--spec-gold);letter-spacing:1.5px;">INDEX</strong>
+  <strong style="display:block;margin-bottom:6px;font-size:11px;color:var(--spec-gold);letter-spacing:1.5px;">INDEX</strong>
   <a href="#overview">LP概要</a>
-  <a href="#s1">S1 Header</a>
-  <a href="#s2">S2 Hero</a>
-  <a href="#s3">S3 Message</a>
-  <a href="#s4">S4 Problem</a>
-  <a href="#s5">S5 Features</a>
-  <a href="#s6">S6 Price</a>
-  <a href="#s7">S7 Voice</a>
-  <a href="#s8">S8 Flow</a>
-  <a href="#s9">S9 FAQ/Reserve</a>
-  <a href="#s10">S10 Closing</a>
-  <a href="#s11">S11 Footer</a>
-  <a href="#img-guide">画像生成ガイド</a>
+  <a href="#s1">S1 Hero</a>
+  <a href="#s2">S2 共感</a>
+  <a href="#s3">S3 痛み</a>
+  <a href="#s4">S4 選ばれる理由</a>
+  <a href="#s5">S5 料金</a>
+  <a href="#s6">S6 Before/After</a>
+  <a href="#s7">S7 流れ</a>
+  <a href="#s8">S8 FAQ</a>
+  <a href="#s9">S9 クロージング</a>
+  <a href="#s10">S10 Footer</a>
+  <a href="#img-guide">画像ガイド</a>
 </div>
 
 <!-- ============ OVERVIEW ============ -->
 <section class="overview" id="overview">
   <h2>LP 概要 / デザイン方向性</h2>
-  <div class="overview-row"><div class="k">サービス名</div><div class="v">Private Salon &amp;N（渋谷・男性専門脱毛サロン）/ 髭脱毛メニュー</div></div>
-  <div class="overview-row"><div class="k">ターゲット</div><div class="v">40〜50代男性。会社役員・管理職・士業・自営業。自己投資意識高く、比較検討型。</div></div>
-  <div class="overview-row"><div class="k">訴求軸</div><div class="v"><strong>白髪ラストチャンス</strong>：白髪が増えると永久脱毛は効かない。今が最後のタイミング。</div></div>
-  <div class="overview-row"><div class="k">コンバージョン</div><div class="v">LINE予約（空き状況確認） / 電話予約（03-6820-7859）</div></div>
-  <div class="overview-row"><div class="k">デザイントーン</div><div class="v">重厚 × 洗練 × 余白美。ラグジュアリーホテルのブランディングに近い静謐さ。遊び要素・手書き要素は不使用。</div></div>
-  <div class="overview-row"><div class="k">カラーパレット</div><div class="v">
+  <div class="overview-row"><div class="k">案件</div><div>Private Salon &amp;N（渋谷・男性専門脱毛サロン）/ 髭脱毛メニュー</div></div>
+  <div class="overview-row"><div class="k">ターゲット</div><div>40〜50代男性。会社役員・管理職・士業・自営業。自己投資意識高く比較検討型。</div></div>
+  <div class="overview-row"><div class="k">訴求軸</div><div><strong>白髪ラストチャンス</strong>：白髪が増えると永久脱毛は効かない。今が最後のタイミング。</div></div>
+  <div class="overview-row"><div class="k">CV</div><div>LINE予約のみ（電話誘導は行わない）</div></div>
+  <div class="overview-row"><div class="k">デザイン基調</div><div>重厚 × 洗練 × 余白美 / セクション境界を曖昧にして1枚のLPとして認識させる</div></div>
+  <div class="overview-row"><div class="k">配色</div><div>
     <span class="palette">
-      <span class="swatch" style="background:#0d0d0d;"></span><span class="swatch-label">#0d0d0d</span>
-      <span class="swatch" style="background:#1a1a1a;"></span><span class="swatch-label">#1a1a1a</span>
-      <span class="swatch" style="background:#c9a84c;"></span><span class="swatch-label">#c9a84c</span>
-      <span class="swatch" style="background:#e8e8e8;"></span><span class="swatch-label">#e8e8e8</span>
-      <span class="swatch" style="background:#00b900;"></span><span class="swatch-label">#00b900</span>
+      <span class="swatch" style="background:#0d0d0d;"></span>
+      <span class="swatch" style="background:#1a1a1a;"></span>
+      <span class="swatch" style="background:#c9a84c;"></span>
+      <span class="swatch" style="background:#e8e8e8;"></span>
+      <span class="swatch" style="background:#00b900;"></span>
     </span>
-    <div style="font-size:11px;color:var(--spec-text-muted);margin-top:8px;">黒×ゴールド基調＋LINE緑はCTAのみ使用。既存バナー仕様書と統一。</div>
+    黒 × ゴールド基調。LINE緑はCTAのみ
   </div></div>
-  <div class="overview-row"><div class="k">タイポグラフィ</div><div class="v">
-    見出し: <strong style="font-family:'Noto Serif JP';">Noto Serif JP 900</strong>（重厚感）<br>
-    本文: <strong>Noto Sans JP 400/700</strong>（可読性）<br>
-    英字アクセント: Inter / Helvetica Neue
+  <div class="overview-row"><div class="k">フォント</div><div>
+    和文見出し: Noto Serif JP 900（重厚）/ 和文本文: Noto Sans JP 400-700 / 欧文アクセント: Inter（極小使用のみ）
   </div></div>
-  <div class="overview-row"><div class="k">画像スタイル</div><div class="v">Style A: フォトリアル人物（40-50代日本人男性モデル）＋ Style B: プロフェッショナル施術シーン ＋ Style E: ミニマルアイコン</div></div>
-  <div class="overview-row"><div class="k">避ける表現</div><div class="v">AI感の出る滑らかすぎる合成・左右対称の無難なレイアウト・中間トーンのグラデーション・手書き/アナログ要素</div></div>
-  <div class="overview-row"><div class="k">技術仕様</div><div class="v">HTML/CSS/JS 1ファイル完結 / レスポンシブ（Mobile First）/ 画像はWebP / 追従CTA / アクセシビリティWCAG AA</div></div>
+  <div class="overview-row"><div class="k">画像方針</div><div>
+    <strong>フリー素材優先</strong>（写真AC・Unsplash）/ AI生成は Hero と施術室内観のみ / 実写のサロン写真が撮れるなら最優先
+  </div></div>
+  <div class="overview-row"><div class="k">動き・装飾</div><div>
+    スクロール連動のフェードイン / Before/Afterスライダー / 背景パララックス（控えめ）/ セクション間を背景連続で繋ぐ
+  </div></div>
+  <div class="overview-row"><div class="k">CTA</div><div>
+    <strong>LINE予約のみ</strong>（緑ボタン「空き状況をLINEで確認する」）/ 配置: Hero直下・S5料金直下・S7スライダー直下・S9クロージング・スマホ追従
+  </div></div>
 </section>
 
-<!-- ============ S1: HEADER ============ -->
+<!-- ============ S1: HERO (v2: 1枚絵) ============ -->
 <section class="section-card" id="s1">
   <div class="section-head">
     <div class="section-num">S1</div>
     <div>
-      <div class="section-title-main">Header / ヘッダー</div>
-      <div class="section-title-sub">FIXED · NAVIGATION · CTA</div>
+      <div class="section-title-main">Hero / ファーストビュー<span class="badge-edit">改訂</span></div>
+      <div class="section-title-sub">ONE VISUAL IMPACT</div>
     </div>
   </div>
   <div class="section-body">
-    <h3>役割</h3>
-    <p>サイト全体の識別子。ブランド表示 + 電話・LINE CTAをスティッキーで常時追従させる。スマホでは高さを抑えつつCTAボタンを常時タップ可能に。</p>
+    <h3>方針</h3>
+    <p>
+      <strong>Geminiで生成した縦長1枚絵 + 最小限のオーバーレイテキスト + LINE CTAのみ</strong>。
+      左右分割レイアウトは廃止。画像自体にコピー・背景・ムードが全て焼き込まれている構成で、
+      スマホで開いた瞬間に「広告？いや、作品だ」と感じさせる没入感を作る。
+    </p>
 
-    <h3>要素</h3>
+    <h3>オーバーレイするコピー</h3>
+    <div class="copy-box">
+      <div class="copy-label">HEADLINE（画像の上に配置）</div>
+      <div class="copy-main">これが、男の<br>最後の決断だ。</div>
+      <div class="copy-sub">白髪が増え始めた今だけが、永久脱毛ができる最後のタイミング。</div>
+      <span class="copy-cta">空き状況をLINEで確認する →</span>
+    </div>
+
+    <h3>レイアウト指針</h3>
     <ul>
-      <li>左: ロゴ「&amp;N / Private Salon」（ゴールド）</li>
-      <li>中央: サブタイトル「渋谷・男性専門脱毛サロン」（PC表示のみ、小）</li>
-      <li>右: 電話番号アイコン + 「LINE予約」ボタン（緑）</li>
+      <li>Heroは画面高さ 100vh （スマホも同様・fitする）</li>
+      <li>背景: Gemini生成の1枚絵（40-50代男性モデル＋サロン的空気感）</li>
+      <li>上部左にロゴ「&amp;N」を小さく（ゴールド）</li>
+      <li>画像下部1/3に黒グラデーション（テキスト可読性確保）</li>
+      <li>中央下: H1 + サブコピー + CTAボタン</li>
+      <li>ヘッダーなし / ナビゲーションなし</li>
     </ul>
 
     <div class="wireframe">
-      <svg viewBox="0 0 900 90" xmlns="http://www.w3.org/2000/svg">
-        <rect width="900" height="90" fill="#0d0d0d"/>
-        <rect x="40" y="30" width="120" height="30" fill="none" stroke="#c9a84c" stroke-width="1.5"/>
-        <text x="100" y="50" fill="#c9a84c" font-size="16" font-weight="700" text-anchor="middle">&amp;N</text>
-        <text x="340" y="52" fill="#888" font-size="11">渋谷・男性専門脱毛サロン</text>
-        <rect x="620" y="28" width="90" height="34" rx="4" fill="none" stroke="#c9a84c" stroke-width="1"/>
-        <text x="665" y="50" fill="#c9a84c" font-size="11" text-anchor="middle">03-xxxx-xxxx</text>
-        <rect x="730" y="26" width="130" height="38" rx="100" fill="#00b900"/>
-        <text x="795" y="50" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">LINE予約 →</text>
+      <svg viewBox="0 0 500 700" xmlns="http://www.w3.org/2000/svg">
+        <!-- Full-bleed image -->
+        <rect width="500" height="700" fill="#1a1a1a"/>
+        <line x1="0" y1="0" x2="500" y2="700" stroke="#2a2a2a"/>
+        <line x1="500" y1="0" x2="0" y2="700" stroke="#2a2a2a"/>
+        <text x="250" y="330" fill="#555" font-size="13" text-anchor="middle">GENERATED IMAGE（縦長1枚絵）</text>
+        <text x="250" y="350" fill="#555" font-size="11" text-anchor="middle">40-50代男性 × サロン空気感</text>
+        <!-- Logo top-left -->
+        <text x="30" y="50" fill="#c9a84c" font-size="16" font-weight="700">&amp;N</text>
+        <!-- Gradient bottom -->
+        <rect x="0" y="400" width="500" height="300" fill="url(#grad)" opacity="0.85"/>
+        <defs>
+          <linearGradient id="grad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#0d0d0d" stop-opacity="0"/>
+            <stop offset="100%" stop-color="#0d0d0d" stop-opacity="1"/>
+          </linearGradient>
+        </defs>
+        <!-- Overlay text -->
+        <text x="250" y="510" fill="#fff" font-size="32" font-weight="900" font-family="serif" text-anchor="middle">これが、男の</text>
+        <text x="250" y="550" fill="#fff" font-size="32" font-weight="900" font-family="serif" text-anchor="middle">最後の決断だ。</text>
+        <text x="250" y="590" fill="#bbb" font-size="12" text-anchor="middle">白髪が増え始めた今だけが、永久脱毛ができる最後のタイミング。</text>
+        <!-- CTA -->
+        <rect x="130" y="620" width="240" height="50" rx="100" fill="#00b900"/>
+        <text x="250" y="651" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">空き状況をLINEで確認 →</text>
       </svg>
-      <div class="wf-caption">S1 Header（PC）</div>
+      <div class="wf-caption">S1 Hero（1枚絵 + オーバーレイ / スマホ優先設計）</div>
     </div>
   </div>
 </section>
 
-<!-- ============ S2: HERO ============ -->
+<!-- ============ S2: 共感 ============ -->
 <section class="section-card" id="s2">
   <div class="section-head">
     <div class="section-num">S2</div>
     <div>
-      <div class="section-title-main">Hero / ファーストビュー</div>
-      <div class="section-title-sub">THE FIRST 3 SECONDS</div>
+      <div class="section-title-main">共感メッセージ<span class="badge-edit">タイトル再設計</span></div>
+      <div class="section-title-sub">— メタ英語ラベル削除 · 本文が見出し —</div>
     </div>
   </div>
   <div class="section-body">
-    <h3>役割</h3>
-    <p>3秒以内に「誰の・何の悩みを・どう解決するLPか」を伝える。白髪ラストチャンス訴求でスクロール継続率を上げる。</p>
+    <h3>方針</h3>
+    <p>「Message」「WHY NOW」などのメタラベル不使用。<strong>本文そのものが見出しとして機能する</strong>。読者が「ここで問題提起されている」と意識する前に内容が届く設計。</p>
 
-    <h3>メインコピー</h3>
+    <h3>コピー（これが見出しそのもの）</h3>
     <div class="copy-box">
-      <div class="copy-label">HEADLINE（現状LPから継承・強化）</div>
-      <div class="copy-main">これが、男の<br>最後の決断だ。</div>
-      <div class="copy-sub">白髪が増え始めた今だけが、永久脱毛ができる最後のタイミング。<br>"あのときやっておけばよかった" — そう後悔する前に。</div>
-      <span class="copy-cta">空き状況をLINEで確認する →</span>
-      <span class="copy-cta gold">料金プランを見る</span>
+      <div class="copy-label">本文 = 見出し</div>
+      <div class="copy-main">白髪になってからでは、<br>もう遅い。</div>
+      <div class="copy-sub">
+        光脱毛は、毛のメラニン色素に反応する技術。<br>
+        白髪になれば反応する色素がなくなり、永久脱毛の効果は得られなくなる。<br>
+        <strong>これは医学的な事実であり、時間で解決する問題ではありません。</strong>
+      </div>
     </div>
 
-    <h3>補足要素（信頼バッジ）</h3>
+    <h3>レイアウト指針</h3>
     <ul>
-      <li>完全個室・1名限定 / 女性スタッフ対応 / 渋谷駅徒歩圏</li>
-      <li>業界最高峰マシン「CLEAR SP-ef#」導入</li>
-      <li>ローン不要・都度払いOK</li>
+      <li>背景は Hero から連続する黒（境界を意識させない）</li>
+      <li>中央揃え / 大きな明朝見出し / 本文ゴシック</li>
+      <li>下部にうっすらと「※ 参考：日本皮膚科学会」</li>
+      <li>スクロールでフェードイン</li>
     </ul>
-
-    <div class="wireframe">
-      <svg viewBox="0 0 900 520" xmlns="http://www.w3.org/2000/svg">
-        <rect width="900" height="520" fill="#0d0d0d"/>
-        <!-- left copy -->
-        <text x="60" y="90" fill="#c9a84c" font-size="11" letter-spacing="3">FOR MEN IN 40s &amp; 50s</text>
-        <text x="60" y="160" fill="#fff" font-size="42" font-weight="900" font-family="serif">これが、男の</text>
-        <text x="60" y="215" fill="#fff" font-size="42" font-weight="900" font-family="serif">最後の決断だ。</text>
-        <rect x="60" y="235" width="8" height="1" fill="#c9a84c"/>
-        <text x="60" y="275" fill="#bbb" font-size="14">白髪が増え始めた今だけが、</text>
-        <text x="60" y="300" fill="#bbb" font-size="14">永久脱毛ができる最後のタイミング。</text>
-        <rect x="60" y="335" width="220" height="52" rx="100" fill="#00b900"/>
-        <text x="170" y="367" fill="#fff" font-size="14" font-weight="700" text-anchor="middle">空き状況をLINEで確認 →</text>
-        <rect x="295" y="335" width="160" height="52" rx="100" fill="none" stroke="#c9a84c" stroke-width="2"/>
-        <text x="375" y="367" fill="#c9a84c" font-size="13" font-weight="700" text-anchor="middle">料金プランを見る</text>
-        <!-- trust badges -->
-        <text x="60" y="435" fill="#666" font-size="10" letter-spacing="2">■ 完全個室・1名限定  ■ 女性スタッフ専門対応  ■ 業界最高峰マシン導入</text>
-        <!-- right visual -->
-        <rect x="520" y="60" width="330" height="420" fill="#1a1a1a" stroke="#c9a84c" stroke-width="0.5"/>
-        <line x1="520" y1="60" x2="850" y2="480" stroke="#333" stroke-width="1"/>
-        <line x1="850" y1="60" x2="520" y2="480" stroke="#333" stroke-width="1"/>
-        <text x="685" y="270" fill="#666" font-size="12" text-anchor="middle">IMAGE: 40-50代男性モデル</text>
-        <text x="685" y="290" fill="#666" font-size="10" text-anchor="middle">（Style A フォトリアル）</text>
-      </svg>
-      <div class="wf-caption">S2 Hero（PC 2カラム / SPは縦積み・画像上＆コピー下）</div>
-    </div>
   </div>
 </section>
 
-<!-- ============ S3: MESSAGE ============ -->
+<!-- ============ S3: 痛み（タイトル再設計） ============ -->
 <section class="section-card" id="s3">
   <div class="section-head">
     <div class="section-num">S3</div>
     <div>
-      <div class="section-title-main">Message / 共感メッセージ</div>
-      <div class="section-title-sub">WHY NOW</div>
+      <div class="section-title-main">3つの痛み<span class="badge-edit">タイトル再設計</span></div>
+      <div class="section-title-sub">— 番号極小化 · 中身主役 —</div>
     </div>
   </div>
   <div class="section-body">
-    <h3>役割</h3>
-    <p>「なぜ今なのか」を医学的根拠で裏付け、時間的切迫感を合理的に醸成する。40-50代の合理判断層は感情だけでは動かない。根本原因を探り、行動遅延のコストを可視化する。</p>
+    <h3>方針</h3>
+    <p>「PAIN POINTS」削除。番号「01 02 03」は極小装飾として残すが、中身の文章を主役に。ユーザーが「悩み3つを並べられている」と気づく前に、自分の話として受け取らせる。</p>
 
-    <h3>コピー案</h3>
-    <div class="copy-box">
-      <div class="copy-label">H2（中央揃え）</div>
-      <div class="copy-main">白髪になってからでは、<br>もう遅い。</div>
-      <div class="copy-sub">光脱毛は毛のメラニン色素に反応します。<br>白髪になると反応する色素がなくなり、永久脱毛の効果が得られなくなる。<br><strong>これは医学的な事実であり、時間で解決する問題ではありません。</strong></div>
-    </div>
+    <h3>3つの痛み（本文が主役）</h3>
+    <table>
+      <tr><th>装飾（極小）</th><th>見出し（中〜大）</th><th>本文（読ませる）</th></tr>
+      <tr><td>point 01</td><td>第一印象で、損をしている。</td><td>剃り残し、青ヒゲ、肌荒れ。<br>取引先、部下、家族に与える「疲れた印象」は、毎日少しずつ信頼を削っていく。</td></tr>
+      <tr><td>point 02</td><td>毎朝10分。年間60時間を、髭剃りに。</td><td>10年続ければ600時間。<br>その時間と、蓄積された肌ダメージ。もう、取り戻せない。</td></tr>
+      <tr><td>point 03</td><td>あと数年で、永久脱毛は不可能になる。</td><td>白髪が増え始めた今がラストチャンス。<br>ここで動かなかった自分を、5年後に後悔する可能性は、極めて高い。</td></tr>
+    </table>
 
-    <h3>配置要素</h3>
+    <h3>レイアウト指針</h3>
     <ul>
-      <li>見出し（明朝・大）</li>
-      <li>本文3行（ゴシック）</li>
-      <li>小さく「参考：日本皮膚科学会」表記で権威付け</li>
-      <li>背景: 黒〜濃紺のグラデなしフラット</li>
+      <li>PC: 3カラム / SP: 縦積み</li>
+      <li>「point 01」は `font-size: 10px; color: #666; letter-spacing: 2px`（うっすら装飾）</li>
+      <li>見出しは `font-size: 22px; font-family: serif` で存在感</li>
+      <li>本文は `font-size: 14px; line-height: 1.9`</li>
+      <li>背景は S2 の黒から徐々にダークグレーへ（境界曖昧）</li>
+      <li>#03カードだけゴールド枠で強調</li>
     </ul>
 
     <div class="wireframe">
-      <svg viewBox="0 0 900 300" xmlns="http://www.w3.org/2000/svg">
-        <rect width="900" height="300" fill="#0d0d0d"/>
-        <text x="450" y="100" fill="#fff" font-size="32" font-weight="900" font-family="serif" text-anchor="middle">白髪になってからでは、</text>
-        <text x="450" y="145" fill="#c9a84c" font-size="32" font-weight="900" font-family="serif" text-anchor="middle">もう遅い。</text>
-        <line x1="410" y1="170" x2="490" y2="170" stroke="#c9a84c" stroke-width="1"/>
-        <text x="450" y="205" fill="#bbb" font-size="13" text-anchor="middle">光脱毛は毛のメラニン色素に反応する。白髪になれば反応する色素がなくなり、</text>
-        <text x="450" y="225" fill="#bbb" font-size="13" text-anchor="middle">永久脱毛の効果が得られなくなる。これは医学的事実である。</text>
-        <text x="450" y="260" fill="#666" font-size="10" text-anchor="middle">※ 参考：日本皮膚科学会</text>
+      <svg viewBox="0 0 900 360" xmlns="http://www.w3.org/2000/svg">
+        <rect width="900" height="360" fill="#0d0d0d"/>
+        <!-- No big title - just small label -->
+        <text x="40" y="60" fill="#666" font-size="10" letter-spacing="3">— 40代・50代だから抱える、3つの痛み —</text>
+        <!-- card 1 -->
+        <g transform="translate(40 100)">
+          <rect width="260" height="220" fill="#1a1a1a" rx="6"/>
+          <text x="20" y="30" fill="#666" font-size="9" letter-spacing="2">POINT 01</text>
+          <text x="20" y="80" fill="#fff" font-size="16" font-weight="700" font-family="serif">第一印象で、</text>
+          <text x="20" y="105" fill="#fff" font-size="16" font-weight="700" font-family="serif">損をしている。</text>
+          <line x1="20" y1="120" x2="50" y2="120" stroke="#c9a84c"/>
+          <text x="20" y="145" fill="#bbb" font-size="11">剃り残し、青ヒゲ、肌荒れ。</text>
+          <text x="20" y="165" fill="#bbb" font-size="11">取引先に与える「疲れた印象」は、</text>
+          <text x="20" y="185" fill="#bbb" font-size="11">毎日少しずつ信頼を削っていく。</text>
+        </g>
+        <!-- card 2 -->
+        <g transform="translate(320 100)">
+          <rect width="260" height="220" fill="#1a1a1a" rx="6"/>
+          <text x="20" y="30" fill="#666" font-size="9" letter-spacing="2">POINT 02</text>
+          <text x="20" y="80" fill="#fff" font-size="16" font-weight="700" font-family="serif">毎朝10分、年60時間</text>
+          <text x="20" y="105" fill="#fff" font-size="16" font-weight="700" font-family="serif">を、髭剃りに。</text>
+          <line x1="20" y1="120" x2="50" y2="120" stroke="#c9a84c"/>
+          <text x="20" y="145" fill="#bbb" font-size="11">10年続ければ600時間。</text>
+          <text x="20" y="165" fill="#bbb" font-size="11">その時間と蓄積された肌ダメージ、</text>
+          <text x="20" y="185" fill="#bbb" font-size="11">もう取り戻せない。</text>
+        </g>
+        <!-- card 3 (gold frame) -->
+        <g transform="translate(600 100)">
+          <rect width="260" height="220" fill="#1a1a1a" stroke="#c9a84c" stroke-width="1.5" rx="6"/>
+          <text x="20" y="30" fill="#c9a84c" font-size="9" letter-spacing="2">POINT 03</text>
+          <text x="20" y="80" fill="#fff" font-size="16" font-weight="700" font-family="serif">あと数年で、</text>
+          <text x="20" y="105" fill="#fff" font-size="16" font-weight="700" font-family="serif">永久脱毛は不可能に。</text>
+          <line x1="20" y1="120" x2="50" y2="120" stroke="#c9a84c"/>
+          <text x="20" y="145" fill="#bbb" font-size="11">白髪が増え始めた今が</text>
+          <text x="20" y="165" fill="#bbb" font-size="11">ラストチャンス。5年後の自分に</text>
+          <text x="20" y="185" fill="#bbb" font-size="11">後悔させない選択を。</text>
+        </g>
       </svg>
-      <div class="wf-caption">S3 Message（中央揃え・静謐トーン）</div>
+      <div class="wf-caption">S3 3つの痛み（番号極小・本文主役 / #03のみゴールド強調）</div>
     </div>
   </div>
 </section>
 
-<!-- ============ S4: PROBLEM ============ -->
+<!-- ============ S4: 選ばれる理由 ============ -->
 <section class="section-card" id="s4">
   <div class="section-head">
     <div class="section-num">S4</div>
     <div>
-      <div class="section-title-main">Problem / 悩みの言語化</div>
-      <div class="section-title-sub">PAIN POINTS</div>
+      <div class="section-title-main">選ばれる理由<span class="badge-edit">タイトル再設計</span></div>
+      <div class="section-title-sub">— 画像×コピー交互 · 番号極小 —</div>
     </div>
   </div>
   <div class="section-body">
-    <h3>役割</h3>
-    <p>40-50代男性特有の髭悩みを3つ可視化し「自分のためのLP」と認識させる。表層でなく、ビジネス・人間関係・時間という深層コストで捉え直す。</p>
+    <h3>方針</h3>
+    <p>
+      「WHY US」「FEATURES」削除。
+      画像×コピーの交互レイアウト（こまちゃんが「UIいいね」と評価）は維持。
+      ただし番号「01/02/03」を極小化し、中身の文章を主役に。
+    </p>
 
-    <h3>3つの悩み</h3>
+    <h3>3つの理由（本文主役）</h3>
     <table>
-      <tr><th width="25%">カード</th><th>タイトル</th><th>本文（60字前後）</th></tr>
-      <tr><td>01 印象</td><td>第一印象で損をしている</td><td>剃り残し・青ヒゲ・肌荒れ。取引先・部下・家族に与える「疲れた印象」は、毎日少しずつ信頼を削っていく。</td></tr>
-      <tr><td>02 時間</td><td>毎朝10分、年間60時間を髭剃りに</td><td>毎日の髭剃りに費やす時間を10年続ければ600時間。その時間と肌ダメージの蓄積、もう取り戻せない。</td></tr>
-      <tr><td>03 白髪</td><td>あと数年で、永久脱毛は不可能になる</td><td>白髪が増え始めた今がラストチャンス。ここで動かなかった自分を、5年後に後悔する可能性は極めて高い。</td></tr>
+      <tr><th>装飾（極小）</th><th>見出し（大・明朝）</th><th>本文</th></tr>
+      <tr><td>reason 01</td><td>完全個室 × 1名限定。<br>他の客と会うことは、ない。</td><td>壁で仕切っただけの"個室"とは違う。<br>施術時間中、サロンにいるのは貴方お一人だけ。<br>受付から退店まで、人目を完全に遮断します。</td></tr>
+      <tr><td>reason 02</td><td>男性美容に特化した、<br>女性スタッフが担当。</td><td>男性の肌質・毛質・ライフスタイルを熟知。<br>カウンセリングから施術、アフターまで一貫して女性スタッフが担当。<br>「ちゃんとわかってもらえる」安心感。</td></tr>
+      <tr><td>reason 03</td><td>高額ローン、不要。<br>都度払いから始められる。</td><td>1回ごとの都度払い、縛りなし、違約金なし、ローン契約なし。<br>「試してから続けるか決める」が当たり前のサロンです。</td></tr>
     </table>
 
-    <h3>レイアウト</h3>
+    <h3>レイアウト指針</h3>
     <ul>
-      <li>PC: 3カラム / SP: 縦積み</li>
-      <li>背景: 深い黒（#0d0d0d）</li>
-      <li>カード: ダーク背景＋ゴールドの番号バッジ＋アイコン（soco-st.com または SVG）</li>
+      <li>画像×コピーの交互配置（奇数: 左画像/右文 / 偶数: 左文/右画像）</li>
+      <li>「reason 01」は `font-size: 10px; color: #c9a84c; letter-spacing: 3px`</li>
+      <li>見出し: `font-size: 28px; font-family: 'Noto Serif JP'; font-weight: 900`</li>
+      <li>画像はフリー素材（写真AC等）を使用、サイズは 500×400px 前後</li>
+      <li>背景: S3から連続する黒。仕切り線なし</li>
+      <li>スクロール連動フェードイン</li>
     </ul>
-
-    <div class="wireframe">
-      <svg viewBox="0 0 900 360" xmlns="http://www.w3.org/2000/svg">
-        <rect width="900" height="360" fill="#0d0d0d"/>
-        <text x="450" y="50" fill="#c9a84c" font-size="11" letter-spacing="3" text-anchor="middle">PAIN POINTS</text>
-        <text x="450" y="85" fill="#fff" font-size="22" font-weight="700" text-anchor="middle">40代・50代だから抱える、3つの痛み</text>
-        <!-- card 1 -->
-        <rect x="50" y="130" width="260" height="180" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1" rx="6"/>
-        <rect x="50" y="130" width="3" height="180" fill="#c9a84c"/>
-        <text x="80" y="165" fill="#c9a84c" font-size="11" font-weight="700">01</text>
-        <circle cx="155" cy="180" r="18" fill="none" stroke="#c9a84c" stroke-width="1"/>
-        <text x="180" y="225" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">第一印象で損をしている</text>
-        <text x="180" y="255" fill="#888" font-size="10" text-anchor="middle">剃り残し・青ヒゲ・肌荒れ</text>
-        <text x="180" y="272" fill="#888" font-size="10" text-anchor="middle">毎日少しずつ信頼を削る</text>
-        <!-- card 2 -->
-        <rect x="320" y="130" width="260" height="180" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1" rx="6"/>
-        <rect x="320" y="130" width="3" height="180" fill="#c9a84c"/>
-        <text x="350" y="165" fill="#c9a84c" font-size="11" font-weight="700">02</text>
-        <circle cx="425" cy="180" r="18" fill="none" stroke="#c9a84c" stroke-width="1"/>
-        <text x="450" y="225" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">毎朝10分、年間60時間</text>
-        <text x="450" y="255" fill="#888" font-size="10" text-anchor="middle">10年で600時間を失う</text>
-        <text x="450" y="272" fill="#888" font-size="10" text-anchor="middle">肌ダメージは戻らない</text>
-        <!-- card 3 -->
-        <rect x="590" y="130" width="260" height="180" fill="#1a1a1a" stroke="#c9a84c" stroke-width="1" rx="6"/>
-        <rect x="590" y="130" width="3" height="180" fill="#c9a84c"/>
-        <text x="620" y="165" fill="#c9a84c" font-size="11" font-weight="700">03</text>
-        <circle cx="695" cy="180" r="18" fill="none" stroke="#c9a84c" stroke-width="1"/>
-        <text x="720" y="225" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">白髪で永久脱毛不可に</text>
-        <text x="720" y="255" fill="#888" font-size="10" text-anchor="middle">ラストチャンスは今</text>
-        <text x="720" y="272" fill="#888" font-size="10" text-anchor="middle">5年後に必ず後悔する</text>
-      </svg>
-      <div class="wf-caption">S4 Problem（3カラム / #03だけゴールド枠で強調）</div>
-    </div>
   </div>
 </section>
 
-<!-- ============ S5: FEATURES ============ -->
+<!-- ============ S5: 料金 ============ -->
 <section class="section-card" id="s5">
   <div class="section-head">
     <div class="section-num">S5</div>
     <div>
-      <div class="section-title-main">Features / &amp;Nが選ばれる理由</div>
-      <div class="section-title-sub">WHY US</div>
+      <div class="section-title-main">料金プラン<span class="badge-new">改善の核心</span></div>
+      <div class="section-title-sub">— 透明性の武器化 —</div>
     </div>
   </div>
   <div class="section-body">
-    <h3>役割</h3>
-    <p>&amp;Nのコアコンピタンス3つを提示。40-50代が40代特有の「恥ずかしさ・気まずさ・ローン警戒」を解消する順序で配置。</p>
+    <h3>方針</h3>
+    <p>現状LPで最大の欠損。¥5,980を堂々と出す。「表示価格が全て」「追加料金なし」で比較検討層の不安を潰す。</p>
 
-    <h3>3つの差別化ポイント</h3>
+    <h3>表示コピー</h3>
+    <div class="copy-box">
+      <div class="copy-label">見出し</div>
+      <div class="copy-main">初回、髭脱毛 ¥5,980。<br>迷う理由が、見つからない。</div>
+    </div>
+
     <table>
-      <tr><th width="25%">軸</th><th>見出し</th><th>本文</th></tr>
-      <tr><td>01 PRIVACY</td><td>完全個室 × 1名限定。<br>他の客と会うことは、ない。</td><td>壁で仕切っただけの「個室」とは違う。施術時間中、サロンにいるのは貴方お一人だけ。受付から退店まで、人目を完全に遮断。</td></tr>
-      <tr><td>02 EXPERTISE</td><td>男性美容に特化した、<br>女性スタッフが対応。</td><td>男性の肌・毛質・ライフスタイルを熟知した女性スタッフが、カウンセリングから施術まで一貫して担当。コンプレックスを理解する専門性。</td></tr>
-      <tr><td>03 FREEDOM</td><td>高額ローン不要。<br>都度払いから始められる。</td><td>1回ごとの都度払い・お得な回数券。縛りなし・違約金なし・ローン契約なし。「試してから続けるか決める」が当たり前のサロン。</td></tr>
+      <tr><th>プラン</th><th>料金（税込）</th><th>補足</th></tr>
+      <tr><td><strong>髭脱毛（初回）</strong></td><td><strong>¥5,980</strong></td><td>第一印象改善・本LPメイン</td></tr>
+      <tr><td>全身 + 顔 + VIO</td><td>¥42,800</td><td>最上位（参考）</td></tr>
+      <tr><td>全身 + 顔</td><td>¥32,800</td><td>産毛ケア込み（参考）</td></tr>
     </table>
 
-    <h3>レイアウト</h3>
+    <h3>信頼サブコピー</h3>
     <ul>
-      <li>各特徴はフルワイドの横長セクション（画像左 / コピー右 を交互に反転）</li>
-      <li>背景: ダーク / 施術シーン写真は large 画像で配置</li>
-      <li>番号は巨大なゴールド数字で配置</li>
+      <li>表示価格が全て。追加料金、一切なし</li>
+      <li>都度払い可。回数券は強制しません</li>
+      <li>カウンセリング後「やっぱり違う」なら、それで結構です</li>
     </ul>
-
-    <div class="wireframe">
-      <svg viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg">
-        <rect width="900" height="500" fill="#0d0d0d"/>
-        <!-- F1 -->
-        <rect x="40" y="30" width="380" height="130" fill="#1a1a1a" stroke="#2a2a2a"/>
-        <line x1="40" y1="30" x2="420" y2="160" stroke="#333"/>
-        <line x1="420" y1="30" x2="40" y2="160" stroke="#333"/>
-        <text x="230" y="100" fill="#666" font-size="11" text-anchor="middle">IMAGE: 完全個室 施術室</text>
-        <text x="450" y="60" fill="#c9a84c" font-size="50" font-weight="900" font-family="serif">01</text>
-        <text x="510" y="60" fill="#888" font-size="10" letter-spacing="2">PRIVACY</text>
-        <text x="450" y="100" fill="#fff" font-size="18" font-weight="700">完全個室 × 1名限定。他の客と会うことは、ない。</text>
-        <text x="450" y="130" fill="#bbb" font-size="11">壁で仕切っただけの"個室"とは違う。施術中、サロンにいるのは貴方だけ。</text>
-        <!-- F2 -->
-        <rect x="480" y="190" width="380" height="130" fill="#1a1a1a" stroke="#2a2a2a"/>
-        <line x1="480" y1="190" x2="860" y2="320" stroke="#333"/>
-        <line x1="860" y1="190" x2="480" y2="320" stroke="#333"/>
-        <text x="670" y="260" fill="#666" font-size="11" text-anchor="middle">IMAGE: 施術するスタッフ</text>
-        <text x="40" y="220" fill="#c9a84c" font-size="50" font-weight="900" font-family="serif">02</text>
-        <text x="100" y="220" fill="#888" font-size="10" letter-spacing="2">EXPERTISE</text>
-        <text x="40" y="260" fill="#fff" font-size="18" font-weight="700">男性美容に特化した、女性スタッフが対応。</text>
-        <text x="40" y="290" fill="#bbb" font-size="11">男性の肌・毛質・ライフスタイルを熟知した女性スタッフが一貫対応。</text>
-        <!-- F3 -->
-        <rect x="40" y="350" width="380" height="130" fill="#1a1a1a" stroke="#2a2a2a"/>
-        <line x1="40" y1="350" x2="420" y2="480" stroke="#333"/>
-        <line x1="420" y1="350" x2="40" y2="480" stroke="#333"/>
-        <text x="230" y="420" fill="#666" font-size="11" text-anchor="middle">IMAGE: カウンセリング</text>
-        <text x="450" y="380" fill="#c9a84c" font-size="50" font-weight="900" font-family="serif">03</text>
-        <text x="510" y="380" fill="#888" font-size="10" letter-spacing="2">FREEDOM</text>
-        <text x="450" y="420" fill="#fff" font-size="18" font-weight="700">高額ローン不要。都度払いから。</text>
-        <text x="450" y="450" fill="#bbb" font-size="11">1回ごとの都度払い・縛りなし・違約金なし。試してから決められる。</text>
-      </svg>
-      <div class="wf-caption">S5 Features（画像×コピー 交互レイアウト）</div>
-    </div>
   </div>
 </section>
 
-<!-- ============ S6: PRICE ============ -->
+<!-- ============ S6: Before/After スライダー ============ -->
 <section class="section-card" id="s6">
   <div class="section-head">
     <div class="section-num">S6</div>
     <div>
-      <div class="section-title-main">Price / 料金プラン<span class="good-badge">改善の核心</span></div>
-      <div class="section-title-sub">TRANSPARENT PRICING</div>
+      <div class="section-title-main">Before/After スライダー<span class="badge-new">新規追加</span></div>
+      <div class="section-title-sub">— インタラクティブ · 部位タブ —</div>
     </div>
   </div>
   <div class="section-body">
-    <h3>役割</h3>
-    <p><strong>現状LPで最大の欠損だったパート。</strong>¥5,980を堂々と出すことで比較検討型の40-50代を取り込む。LINE誘導より先に「検討の材料」を揃える。</p>
+    <h3>方針</h3>
+    <p>
+      メンズリゼ型の <strong>ドラッグで比較できるBefore/Afterスライダー</strong>。
+      ユーザーが能動的にドラッグすることで、体験として記憶に残る。
+    </p>
 
-    <h3>表示内容</h3>
-    <table>
-      <tr><th>プラン</th><th>料金（税込）</th><th>補足</th></tr>
-      <tr><td><strong>髭脱毛</strong></td><td><strong>¥5,980</strong></td><td>第一印象改善・今回のLPメイン</td></tr>
-      <tr><td>全身 + 顔 + VIO</td><td>¥42,800</td><td>最上位コース（参考）</td></tr>
-      <tr><td>全身 + 顔</td><td>¥32,800</td><td>産毛ケア込み（参考）</td></tr>
-    </table>
-
-    <h3>訴求フック</h3>
+    <h3>ギミック仕様</h3>
     <ul>
-      <li>「他サロン相場 ¥10,000〜15,000」との比較（※要エビデンス確認）</li>
-      <li>「初回限定価格」バッジ</li>
-      <li>都度払い・ローン不要の再強調</li>
-      <li>「表示価格が全て。追加料金・勧誘なし」の安心訴求</li>
+      <li><strong>比較スライダー</strong>: 1枚の中央に縦の仕切りをドラッグ → 左Before / 右After</li>
+      <li><strong>部位タブ</strong>: 「口周り」「顎」「頬」の3タブ切替</li>
+      <li><strong>回数表示</strong>: 「1回」「3回」「5回」「10回」の段階</li>
+      <li><strong>JS実装</strong>: 軽量（`img-comparison-slider` 等のライブラリ）</li>
+      <li><strong>写真</strong>: 実データ取得必須（勝手にAI生成した顔は使わない）。<br>画像取得までは「症例写真準備中」の暫定プレースホルダ</li>
     </ul>
 
+    <h3>画像データ不足時の対応</h3>
+    <p>実データが揃うまでは、このセクションは <strong>匿名化・部分カット</strong>（顔の口周りだけ切り取り）の画像2-3枚のみに留める。無理に3部位揃えない。</p>
+
     <div class="wireframe">
-      <svg viewBox="0 0 900 360" xmlns="http://www.w3.org/2000/svg">
-        <rect width="900" height="360" fill="#0d0d0d"/>
-        <text x="450" y="50" fill="#c9a84c" font-size="11" letter-spacing="3" text-anchor="middle">TRANSPARENT PRICING</text>
-        <text x="450" y="85" fill="#fff" font-size="22" font-weight="700" text-anchor="middle">料金プラン</text>
-        <!-- メイン価格カード -->
-        <rect x="200" y="120" width="500" height="170" fill="#1a1a1a" stroke="#c9a84c" stroke-width="2" rx="8"/>
-        <rect x="230" y="140" width="80" height="22" fill="#c9a84c" rx="2"/>
-        <text x="270" y="156" fill="#0d0d0d" font-size="11" font-weight="700" text-anchor="middle">初回限定</text>
-        <text x="230" y="200" fill="#fff" font-size="18" font-weight="700">髭脱毛（1回）</text>
-        <text x="570" y="210" fill="#c9a84c" font-size="44" font-weight="900" font-family="serif" text-anchor="middle">¥5,980</text>
-        <text x="670" y="210" fill="#888" font-size="11">税込</text>
-        <line x1="230" y1="225" x2="670" y2="225" stroke="#333"/>
-        <text x="230" y="250" fill="#bbb" font-size="11">■ 都度払い可 ■ 表示価格が全て ■ 強引な勧誘なし</text>
-        <text x="230" y="275" fill="#666" font-size="10">他店相場 ¥10,000〜15,000（※参考値）</text>
-        <!-- 他プラン参考 -->
-        <text x="450" y="325" fill="#666" font-size="11" text-anchor="middle">全身コースなど他プランの詳細はカウンセリングにてご案内</text>
+      <svg viewBox="0 0 900 440" xmlns="http://www.w3.org/2000/svg">
+        <rect width="900" height="440" fill="#0d0d0d"/>
+        <text x="450" y="50" fill="#fff" font-size="22" font-weight="700" font-family="serif" text-anchor="middle">動いた人は、こう変わった。</text>
+        <!-- Tabs -->
+        <g transform="translate(280 85)">
+          <rect width="110" height="36" fill="#c9a84c"/>
+          <text x="55" y="22" fill="#0d0d0d" font-size="12" font-weight="700" text-anchor="middle">口周り</text>
+          <rect x="115" width="110" height="36" fill="none" stroke="#444"/>
+          <text x="170" y="22" fill="#888" font-size="12" text-anchor="middle">顎</text>
+          <rect x="230" width="110" height="36" fill="none" stroke="#444"/>
+          <text x="285" y="22" fill="#888" font-size="12" text-anchor="middle">頬</text>
+        </g>
+        <!-- Slider -->
+        <rect x="200" y="150" width="500" height="220" fill="#222"/>
+        <line x1="200" y1="150" x2="700" y2="370" stroke="#333"/>
+        <line x1="700" y1="150" x2="200" y2="370" stroke="#333"/>
+        <text x="320" y="265" fill="#666" font-size="11" text-anchor="middle">BEFORE</text>
+        <text x="580" y="265" fill="#666" font-size="11" text-anchor="middle">AFTER</text>
+        <!-- Divider -->
+        <line x1="450" y1="150" x2="450" y2="370" stroke="#c9a84c" stroke-width="3"/>
+        <circle cx="450" cy="260" r="14" fill="#c9a84c"/>
+        <text x="450" y="265" fill="#0d0d0d" font-size="14" font-weight="700" text-anchor="middle">⇄</text>
+        <!-- Step dots -->
+        <g transform="translate(360 395)">
+          <circle cx="0" cy="0" r="6" fill="#c9a84c"/>
+          <text x="0" y="22" fill="#c9a84c" font-size="10" text-anchor="middle">1回</text>
+          <circle cx="50" cy="0" r="6" fill="#444"/>
+          <text x="50" y="22" fill="#666" font-size="10" text-anchor="middle">3回</text>
+          <circle cx="100" cy="0" r="6" fill="#444"/>
+          <text x="100" y="22" fill="#666" font-size="10" text-anchor="middle">5回</text>
+          <circle cx="150" cy="0" r="6" fill="#444"/>
+          <text x="150" y="22" fill="#666" font-size="10" text-anchor="middle">10回</text>
+        </g>
       </svg>
-      <div class="wf-caption">S6 Price（メイン価格を巨大表示＋信頼サブコピー）</div>
+      <div class="wf-caption">S6 Before/After（部位タブ + ドラッグスライダー + 回数ドット）</div>
     </div>
   </div>
 </section>
 
-<!-- ============ S7: VOICE ============ -->
+<!-- ============ S7: 流れ ============ -->
 <section class="section-card" id="s7">
   <div class="section-head">
     <div class="section-num">S7</div>
     <div>
-      <div class="section-title-main">Voice / お客様の声 &amp; Before/After</div>
-      <div class="section-title-sub">SOCIAL PROOF</div>
+      <div class="section-title-main">予約から施術までの流れ</div>
+      <div class="section-title-sub">— ハードルを下げる4ステップ —</div>
     </div>
   </div>
   <div class="section-body">
-    <h3>役割</h3>
-    <p>同世代の実例で「自分も変われる」を示す。数字と固有情報（年齢・職業・期間）で AI感を消す。エピソードを織り交ぜて共感的ナラティブを構築。</p>
+    <h3>4ステップ</h3>
+    <table>
+      <tr><th>#</th><th>タイトル（大）</th><th>本文</th><th>所要</th></tr>
+      <tr><td>01</td><td>LINEで予約</td><td>空き状況を確認、希望日時をメッセージで送るだけ</td><td>30秒</td></tr>
+      <tr><td>02</td><td>来店・カウンセリング</td><td>渋谷駅徒歩圏。肌状態と悩みをヒアリング。勧誘は、しません</td><td>15分</td></tr>
+      <tr><td>03</td><td>施術</td><td>完全個室で髭脱毛。女性スタッフが丁寧に対応</td><td>20分</td></tr>
+      <tr><td>04</td><td>アフターケア</td><td>肌ケアと次回予約の相談（任意）。都度払い</td><td>10分</td></tr>
+    </table>
 
-    <h3>コンテンツ案（3件）</h3>
+    <h3>レイアウト指針</h3>
     <ul>
-      <li><strong>Voice 01:</strong> 48歳・会社役員 / 「商談前の朝の身だしなみが30分短縮。顔色まで明るく見える」/ 通院3回目</li>
-      <li><strong>Voice 02:</strong> 52歳・自営業 / 「息子に"最近若返った？"と言われた。もっと早く来ればよかった」/ 通院5回目</li>
-      <li><strong>Voice 03:</strong> 45歳・弁護士 / 「他サロンで感じた気まずさが一切ない。完全個室の価値を知った」/ 通院2回目</li>
+      <li>PC: 水平4ステップ / SP: 縦配置</li>
+      <li>番号01-04はゴールド丸 + 白文字</li>
+      <li>各ステップ下に小さく所要時間</li>
+      <li>ステップ間は点線で繋ぐ（流れの連続性）</li>
     </ul>
-    <p style="font-size:12px;color:var(--spec-text-muted);">※ 実データ集めるまでは上記を「参考イメージ」として使用。可能なら本物のお客様写真＋許諾取得。</p>
-
-    <h3>Before / After</h3>
-    <p>顔全体でなく「口元・顎ライン」のクロップ写真で医療広告ガイドライン対応。差分が分かる構図。</p>
-
-    <div class="wireframe">
-      <svg viewBox="0 0 900 380" xmlns="http://www.w3.org/2000/svg">
-        <rect width="900" height="380" fill="#0d0d0d"/>
-        <text x="450" y="45" fill="#c9a84c" font-size="11" letter-spacing="3" text-anchor="middle">SOCIAL PROOF</text>
-        <text x="450" y="80" fill="#fff" font-size="22" font-weight="700" text-anchor="middle">40-50代、実際の声</text>
-        <!-- 3 cards -->
-        <g transform="translate(50 120)">
-          <rect width="250" height="230" fill="#1a1a1a" rx="6"/>
-          <rect x="0" y="0" width="100" height="100" fill="#222"/>
-          <line x1="0" y1="0" x2="100" y2="100" stroke="#333"/>
-          <text x="50" y="55" fill="#666" font-size="10" text-anchor="middle">FACE IMG</text>
-          <text x="120" y="30" fill="#c9a84c" font-size="11" font-weight="700">48歳・会社役員</text>
-          <text x="120" y="50" fill="#888" font-size="10">通院3回目</text>
-          <text x="20" y="135" fill="#fff" font-size="11">「商談前の朝が30分短縮。</text>
-          <text x="20" y="155" fill="#fff" font-size="11">顔色まで明るく見える」</text>
-          <text x="20" y="195" fill="#666" font-size="10">★★★★★</text>
-        </g>
-        <g transform="translate(325 120)">
-          <rect width="250" height="230" fill="#1a1a1a" rx="6"/>
-          <rect x="0" y="0" width="100" height="100" fill="#222"/>
-          <line x1="0" y1="0" x2="100" y2="100" stroke="#333"/>
-          <text x="50" y="55" fill="#666" font-size="10" text-anchor="middle">FACE IMG</text>
-          <text x="120" y="30" fill="#c9a84c" font-size="11" font-weight="700">52歳・自営業</text>
-          <text x="120" y="50" fill="#888" font-size="10">通院5回目</text>
-          <text x="20" y="135" fill="#fff" font-size="11">「息子に"若返った？"と</text>
-          <text x="20" y="155" fill="#fff" font-size="11">言われた。もっと早く」</text>
-          <text x="20" y="195" fill="#666" font-size="10">★★★★★</text>
-        </g>
-        <g transform="translate(600 120)">
-          <rect width="250" height="230" fill="#1a1a1a" rx="6"/>
-          <rect x="0" y="0" width="100" height="100" fill="#222"/>
-          <line x1="0" y1="0" x2="100" y2="100" stroke="#333"/>
-          <text x="50" y="55" fill="#666" font-size="10" text-anchor="middle">FACE IMG</text>
-          <text x="120" y="30" fill="#c9a84c" font-size="11" font-weight="700">45歳・弁護士</text>
-          <text x="120" y="50" fill="#888" font-size="10">通院2回目</text>
-          <text x="20" y="135" fill="#fff" font-size="11">「完全個室の価値を</text>
-          <text x="20" y="155" fill="#fff" font-size="11">初めて知った」</text>
-          <text x="20" y="195" fill="#666" font-size="10">★★★★★</text>
-        </g>
-      </svg>
-      <div class="wf-caption">S7 Voice（3カード / PCは横並び・SPは縦積み）</div>
-    </div>
   </div>
 </section>
 
-<!-- ============ S8: FLOW ============ -->
+<!-- ============ S8: FAQ ============ -->
 <section class="section-card" id="s8">
   <div class="section-head">
     <div class="section-num">S8</div>
     <div>
-      <div class="section-title-main">Flow / 予約から施術までの流れ</div>
-      <div class="section-title-sub">STEP BY STEP</div>
+      <div class="section-title-main">よくある質問</div>
+      <div class="section-title-sub">— 懸念の先回り —</div>
     </div>
   </div>
   <div class="section-body">
-    <h3>役割</h3>
-    <p>「初めての脱毛で不安」層のハードルを下げる。4ステップで所要時間・持ち物まで明記。</p>
+    <h3>FAQ 6件（アコーディオン式）</h3>
+    <ol style="margin-left:22px;font-size:13px;">
+      <li><strong>痛みはどのくらい？</strong> → 業界最高峰マシンの冷却機能で、輪ゴムで弾かれる程度。「想像より痛くない」と多くの方に言われます。</li>
+      <li><strong>何回で効果が出る？</strong> → 個人差はありますが、多くの方が3〜5回で実感。髭は8〜10回で永久的な減毛が目安です。</li>
+      <li><strong>初回でローンや高額コースを勧められる？</strong> → ありません。都度払い制で、気に入らなければそれで終わりです。</li>
+      <li><strong>他の客と顔を合わせることは？</strong> → 完全1名貸切制のため、来店から退店まで他のお客様と会うことはありません。</li>
+      <li><strong>白髪の髭にも効く？</strong> → 白髪部分には光脱毛は反応しません。黒髪が残っている今がラストチャンスです。</li>
+      <li><strong>当日キャンセルは？</strong> → 前日までのご連絡でキャンセル料無料です。</li>
+    </ol>
 
-    <h3>4ステップ</h3>
-    <table>
-      <tr><th>#</th><th>タイトル</th><th>内容</th><th>所要</th></tr>
-      <tr><td>01</td><td>LINE予約</td><td>空き状況を確認、希望日時をメッセージ送信するだけ</td><td>30秒</td></tr>
-      <tr><td>02</td><td>ご来店・カウンセリング</td><td>渋谷駅徒歩圏。肌状態・悩みをヒアリング。勧誘なし</td><td>15分</td></tr>
-      <tr><td>03</td><td>施術</td><td>完全個室で髭脱毛。女性スタッフが丁寧に対応</td><td>20分</td></tr>
-      <tr><td>04</td><td>アフターケア・お会計</td><td>肌ケアと次回予約の相談（任意）。都度払い</td><td>10分</td></tr>
-    </table>
-
-    <div class="wireframe">
-      <svg viewBox="0 0 900 240" xmlns="http://www.w3.org/2000/svg">
-        <rect width="900" height="240" fill="#0d0d0d"/>
-        <text x="450" y="50" fill="#c9a84c" font-size="11" letter-spacing="3" text-anchor="middle">STEP BY STEP</text>
-        <text x="450" y="85" fill="#fff" font-size="22" font-weight="700" text-anchor="middle">予約から施術までの流れ</text>
-        <!-- step circles -->
-        <g transform="translate(70 140)">
-          <circle r="30" fill="#1a1a1a" stroke="#c9a84c" stroke-width="2"/>
-          <text y="6" fill="#c9a84c" font-size="18" font-weight="900" text-anchor="middle">01</text>
-          <text y="60" fill="#fff" font-size="12" font-weight="700" text-anchor="middle">LINE予約</text>
-          <text y="80" fill="#888" font-size="10" text-anchor="middle">30秒</text>
-        </g>
-        <line x1="115" y1="140" x2="265" y2="140" stroke="#444" stroke-dasharray="3 4"/>
-        <g transform="translate(290 140)">
-          <circle r="30" fill="#1a1a1a" stroke="#c9a84c" stroke-width="2"/>
-          <text y="6" fill="#c9a84c" font-size="18" font-weight="900" text-anchor="middle">02</text>
-          <text y="60" fill="#fff" font-size="12" font-weight="700" text-anchor="middle">カウンセリング</text>
-          <text y="80" fill="#888" font-size="10" text-anchor="middle">15分</text>
-        </g>
-        <line x1="335" y1="140" x2="485" y2="140" stroke="#444" stroke-dasharray="3 4"/>
-        <g transform="translate(510 140)">
-          <circle r="30" fill="#1a1a1a" stroke="#c9a84c" stroke-width="2"/>
-          <text y="6" fill="#c9a84c" font-size="18" font-weight="900" text-anchor="middle">03</text>
-          <text y="60" fill="#fff" font-size="12" font-weight="700" text-anchor="middle">施術</text>
-          <text y="80" fill="#888" font-size="10" text-anchor="middle">20分</text>
-        </g>
-        <line x1="555" y1="140" x2="705" y2="140" stroke="#444" stroke-dasharray="3 4"/>
-        <g transform="translate(730 140)">
-          <circle r="30" fill="#1a1a1a" stroke="#c9a84c" stroke-width="2"/>
-          <text y="6" fill="#c9a84c" font-size="18" font-weight="900" text-anchor="middle">04</text>
-          <text y="60" fill="#fff" font-size="12" font-weight="700" text-anchor="middle">アフターケア</text>
-          <text y="80" fill="#888" font-size="10" text-anchor="middle">10分</text>
-        </g>
-      </svg>
-      <div class="wf-caption">S8 Flow（水平ステップ / SPは縦ステップに転換）</div>
-    </div>
+    <h3>レイアウト</h3>
+    <ul>
+      <li>アコーディオン式（クリックで開閉）</li>
+      <li>質問の左に「Q」、回答の左に「A」をゴールドで</li>
+      <li>背景: 微妙に薄いグレー（他セクションとの区別は境界ではなく色温度で）</li>
+    </ul>
   </div>
 </section>
 
-<!-- ============ S9: FAQ + RESERVE ============ -->
+<!-- ============ S9: クロージング ============ -->
 <section class="section-card" id="s9">
   <div class="section-head">
     <div class="section-num">S9</div>
     <div>
-      <div class="section-title-main">FAQ &amp; Reserve / よくある質問・予約</div>
-      <div class="section-title-sub">REMOVE DOUBTS</div>
+      <div class="section-title-main">クロージング</div>
+      <div class="section-title-sub">— 最後の一押し —</div>
     </div>
   </div>
   <div class="section-body">
-    <h3>役割</h3>
-    <p>最終判断前の懸念を潰す。反対意見を先取りして払拭。右側にLINE予約の追従セクションを配置。</p>
-
-    <h3>FAQ 6件</h3>
-    <ol style="margin-left:22px;font-size:14px;">
-      <li><strong>Q. 痛みは？</strong> → 業界最高峰マシンの冷却機能で、輪ゴムで弾かれる程度。多くの方が「想像より痛くない」と仰います。</li>
-      <li><strong>Q. 何回で効果が出る？</strong> → 個人差はありますが、多くの方が3〜5回で実感。髭の場合は8〜10回で永久的な減毛が目安。</li>
-      <li><strong>Q. 初回でローンや高額コースを勧められる？</strong> → ありません。都度払い制で、気に入らなければそれで終わりです。</li>
-      <li><strong>Q. 他の客と顔を合わせることは？</strong> → 完全1名貸切制のため、来店から退店まで他のお客様と会うことはありません。</li>
-      <li><strong>Q. 白髪の髭にも効く？</strong> → 白髪部分には光脱毛は反応しません。黒髪が残っている今がラストチャンスです。</li>
-      <li><strong>Q. 当日キャンセルは？</strong> → 前日までのご連絡でキャンセル料無料。</li>
-    </ol>
-
-    <h3>予約パート</h3>
-    <ul>
-      <li>メインCTA: 「空き状況をLINEで確認する」（緑・大）</li>
-      <li>サブCTA: 電話予約「03-6820-7859」（タップで発信）</li>
-      <li>注記: 「24時間受付・完全予約制・強引な勧誘なし」</li>
-    </ul>
-
-    <div class="wireframe">
-      <svg viewBox="0 0 900 380" xmlns="http://www.w3.org/2000/svg">
-        <rect width="900" height="380" fill="#0d0d0d"/>
-        <!-- left FAQ -->
-        <rect x="40" y="40" width="500" height="310" fill="#1a1a1a" stroke="#2a2a2a" rx="6"/>
-        <text x="60" y="75" fill="#c9a84c" font-size="12" letter-spacing="2">FAQ</text>
-        <text x="60" y="100" fill="#fff" font-size="16" font-weight="700">よくある質問</text>
-        <line x1="60" y1="115" x2="120" y2="115" stroke="#c9a84c"/>
-        <g fill="#888" font-size="11">
-          <text x="60" y="145">Q. 痛みは？</text>
-          <text x="60" y="175">Q. 何回で効果？</text>
-          <text x="60" y="205">Q. 勧誘ある？</text>
-          <text x="60" y="235">Q. 他の客と会う？</text>
-          <text x="60" y="265">Q. 白髪にも効く？</text>
-          <text x="60" y="295">Q. キャンセルは？</text>
-        </g>
-        <!-- right CTA -->
-        <rect x="560" y="40" width="300" height="310" fill="#1a1a1a" stroke="#c9a84c" rx="6"/>
-        <text x="710" y="85" fill="#c9a84c" font-size="11" text-anchor="middle" letter-spacing="2">RESERVE NOW</text>
-        <text x="710" y="125" fill="#fff" font-size="16" font-weight="700" text-anchor="middle">今すぐ予約</text>
-        <rect x="590" y="160" width="240" height="52" rx="100" fill="#00b900"/>
-        <text x="710" y="192" fill="#fff" font-size="14" font-weight="700" text-anchor="middle">LINEで予約する →</text>
-        <rect x="590" y="225" width="240" height="48" rx="100" fill="none" stroke="#c9a84c" stroke-width="1.5"/>
-        <text x="710" y="255" fill="#c9a84c" font-size="13" font-weight="700" text-anchor="middle">03-6820-7859</text>
-        <text x="710" y="310" fill="#666" font-size="10" text-anchor="middle">24時間受付・完全予約制</text>
-        <text x="710" y="327" fill="#666" font-size="10" text-anchor="middle">強引な勧誘は一切なし</text>
-      </svg>
-      <div class="wf-caption">S9 FAQ + Reserve（左FAQ / 右CTAカード・SPは上FAQ下CTA）</div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ S10: CLOSING ============ -->
-<section class="section-card" id="s10">
-  <div class="section-head">
-    <div class="section-num">S10</div>
-    <div>
-      <div class="section-title-main">Closing / 最後の一押し</div>
-      <div class="section-title-sub">FINAL PUSH</div>
-    </div>
-  </div>
-  <div class="section-body">
-    <h3>役割</h3>
-    <p>スクロール完走したユーザーへの最後の説得。希少性・時間軸で背中を押す。</p>
-
     <h3>コピー</h3>
     <div class="copy-box">
-      <div class="copy-label">CLOSING HEADLINE</div>
+      <div class="copy-label">CLOSING</div>
       <div class="copy-main">白髪になる前に、<br>動け。</div>
       <div class="copy-sub">10年後のあなたが、今日のあなたに感謝する。<br>それだけの価値が、この一歩にはあります。</div>
       <span class="copy-cta">空き状況をLINEで確認する →</span>
     </div>
 
-    <div class="wireframe">
-      <svg viewBox="0 0 900 320" xmlns="http://www.w3.org/2000/svg">
-        <rect width="900" height="320" fill="#0d0d0d"/>
-        <rect x="0" y="0" width="900" height="320" fill="url(#g1)" opacity="0.4"/>
-        <defs>
-          <radialGradient id="g1" cx="50%" cy="50%">
-            <stop offset="0%" stop-color="#c9a84c" stop-opacity="0.15"/>
-            <stop offset="100%" stop-color="#0d0d0d" stop-opacity="0"/>
-          </radialGradient>
-        </defs>
-        <text x="450" y="110" fill="#fff" font-size="42" font-weight="900" font-family="serif" text-anchor="middle">白髪になる前に、</text>
-        <text x="450" y="165" fill="#c9a84c" font-size="42" font-weight="900" font-family="serif" text-anchor="middle">動け。</text>
-        <text x="450" y="215" fill="#bbb" font-size="13" text-anchor="middle">10年後のあなたが、今日のあなたに感謝する。</text>
-        <rect x="340" y="245" width="220" height="52" rx="100" fill="#00b900"/>
-        <text x="450" y="277" fill="#fff" font-size="14" font-weight="700" text-anchor="middle">空き状況をLINEで確認 →</text>
-      </svg>
-      <div class="wf-caption">S10 Closing（静かだが重いトーン・中央スポットライト）</div>
-    </div>
+    <h3>レイアウト</h3>
+    <ul>
+      <li>中央揃え、背景は深い黒 + 中央スポットライト（radial gradient）</li>
+      <li>明朝の大見出し + CTAボタンのみのシンプル構成</li>
+      <li>スクロール時、コピーが下からゆっくりフェードインで出現</li>
+    </ul>
   </div>
 </section>
 
-<!-- ============ S11: FOOTER ============ -->
-<section class="section-card" id="s11">
+<!-- ============ S10: Footer ============ -->
+<section class="section-card" id="s10">
   <div class="section-head">
-    <div class="section-num">S11</div>
+    <div class="section-num">S10</div>
     <div>
-      <div class="section-title-main">Footer / フッター</div>
-      <div class="section-title-sub">BUSINESS INFO</div>
+      <div class="section-title-main">Footer</div>
+      <div class="section-title-sub">— 店舗情報 —</div>
     </div>
   </div>
   <div class="section-body">
     <h3>内容</h3>
     <ul>
       <li>店舗名: Private Salon &amp;N</li>
-      <li>住所: 東京都渋谷区〇〇（実住所をマーケ資料から転記）</li>
-      <li>電話: 03-6820-7859</li>
+      <li>住所: 東京都渋谷区〇〇（マーケ資料から転記）</li>
+      <li>電話: 03-6820-7859（<strong>CTAとしては使わない、情報として記載のみ</strong>）</li>
       <li>営業時間 / 定休日</li>
       <li>公式サイト: privatesalon-andn.com</li>
       <li>プライバシーポリシー / 特定商取引法に基づく表記</li>
@@ -957,93 +790,83 @@
   </div>
 </section>
 
-<!-- ============ ADDITIONAL UI ELEMENTS ============ -->
+<!-- ============ 追従CTA ============ -->
 <section class="section-card">
   <div class="section-head">
     <div class="section-num">+</div>
     <div>
-      <div class="section-title-main">追加UI要素</div>
-      <div class="section-title-sub">PERSISTENT ELEMENTS</div>
+      <div class="section-title-main">追従CTA（スマホ下部固定）</div>
+      <div class="section-title-sub">— PERSISTENT —</div>
     </div>
   </div>
   <div class="section-body">
-    <h3>追従CTA（スマホ下部固定）</h3>
-    <p>スクロール開始から常時表示。「LINEで予約 →」ボタン。画面占有は高さ60pxまで。</p>
-    <h3>カウントダウン（任意・A/Bテスト候補）</h3>
-    <p>「今月の初回体験枠 残り 〇名」のマイクロコピー。希少性訴求。虚偽表示は禁物なので実データ連動が前提。</p>
-    <h3>追従CTAのON/OFF判定</h3>
+    <h3>仕様</h3>
     <ul>
-      <li>Hero内のCTAが見えている間は非表示（重複防止）</li>
-      <li>S3以降で表示、S11 Footer到達で非表示</li>
+      <li>スクロール開始から表示</li>
+      <li>LINEボタン「空き状況をLINEで確認」のみ（電話なし）</li>
+      <li>高さ60px、画面下固定</li>
+      <li>Heroと重なる間 / Footerに到達時は非表示</li>
     </ul>
   </div>
 </section>
 
 <!-- ============ IMAGE GUIDE ============ -->
 <section class="img-guide" id="img-guide">
-  <h2>IMAGE GENERATION GUIDE</h2>
-  <h1>画像生成ガイド（Google Imagen / Gemini 対応）</h1>
-  <p style="color:#bbb;font-size:13px;margin-bottom:24px;">AI感を消すため、<strong>可能な限り実写（サロン実撮影）</strong>を推奨。生成画像を使う場合は以下プロンプトを参照。40-50代日本人男性の誠実・知的な印象を重視。</p>
+  <h2>IMAGE SOURCE GUIDE</h2>
+  <h1>画像調達ガイド（フリー素材優先方針）</h1>
+  <p style="color:#bbb;font-size:13px;margin-bottom:24px;">
+    <strong>AI生成はHeroと施術室内観のみに限定。</strong>
+    それ以外は<strong>写真AC・Unsplash等のフリー素材</strong>から最適サイズを選んで配置する。
+    サロン実撮影の写真が用意できるなら、それが最優先。
+  </p>
 
   <div class="img-item">
-    <h4>◆ S2 Hero メインビジュアル</h4>
-    <div class="usage">用途: Heroセクション右側 / 推奨 800×1000px / 最重要画像</div>
-    <div class="prompt-block">Photorealistic portrait of a distinguished Japanese man in his late 40s to early 50s, short salt-and-pepper hair starting to gray at temples, confident calm expression, wearing a dark charcoal tailored shirt, looking directly at camera with quiet intensity, shot against deep black background, cinematic Rembrandt lighting from upper left, shallow depth of field f/1.8, shot on Leica SL2 with 90mm lens, editorial fashion photography, Wall Street Journal style, luxury mens grooming campaign aesthetic, clean skin texture visible, no beard shadow, high resolution, 8K, no text, no watermark</div>
-    <div class="prompt-tips">Tips: "salt-and-pepper hair" で白髪の始まりを示唆→訴求軸と連動 / "luxury mens grooming campaign" でAI感を抑えた広告品質を指示</div>
+    <h4>◆ S1 Hero 1枚絵（縦長フルスクリーン）— AI生成</h4>
+    <div class="usage">用途: Hero全画面 / 推奨 1080×1920px（縦長9:16）/ 最重要・1枚勝負</div>
+    <div class="prompt-block">Cinematic portrait-orientation photograph, 9:16 aspect ratio, of a distinguished Japanese man in his late 40s to early 50s, short salt-and-pepper hair beginning to gray at the temples, calm confident expression looking into middle distance, wearing a black cashmere crew neck, shot from slightly below eye level for gravitas, deep black minimal background with subtle warm golden rim light from right side, cinematic Rembrandt lighting, shot on Hasselblad H6D with 80mm lens at f/2.8, extreme detail on skin texture without being harsh, luxury mens grooming campaign aesthetic (think Tom Ford, Giorgio Armani editorial), moody contemplative atmosphere, space in bottom third of frame for text overlay, absolutely no text, no logos, no watermark, 8K resolution, professional editorial photography</div>
+    <div class="prompt-tips">Tips: 「space in bottom third of frame for text overlay」でテキスト配置スペースを確保 / 「salt-and-pepper hair」で白髪訴求と連動 / 撮影設定（Hasselblad・80mm）で AI感排除</div>
   </div>
 
   <div class="img-item">
-    <h4>◆ S4 Problem アイコン × 3</h4>
-    <div class="usage">用途: 3カード / 各40×40px / SVGアイコン or soco-st.com</div>
-    <div class="prompt-block">Minimal flat line icon set of three: (1) a mirror with reflection representing first impressions, (2) an hourglass representing time loss, (3) a calendar page with warning representing deadline, gold accent color #c9a84c on dark background, consistent 2px stroke weight, clean geometric design, premium business aesthetic, no text labels</div>
-    <div class="prompt-tips">Tips: soco-st.com で「鏡」「砂時計」「警告」検索も有効</div>
+    <h4>◆ S4 選ばれる理由 画像×3 — フリー素材優先</h4>
+    <div class="usage">用途: 交互レイアウト左右のビジュアル / 各500×400px</div>
+    <div class="free-source">
+      <strong>推奨検索キーワード（写真AC / Unsplash）</strong>:<br>
+      reason 01「完全個室」→ <a href="https://www.photo-ac.com/main/search?q=エステ+個室" target="_blank">エステ 個室 / beauty salon private room</a><br>
+      reason 02「女性スタッフ」→ <a href="https://www.photo-ac.com/main/search?q=エステティシャン+女性" target="_blank">エステティシャン 女性 / female esthetician hands</a><br>
+      reason 03「カウンセリング」→ <a href="https://www.photo-ac.com/main/search?q=カウンセリング+美容" target="_blank">美容 カウンセリング / consultation desk</a>
+    </div>
+    <div class="prompt-tips">Tips: 顔が大きく写らない構図（手元・後ろ姿・インテリア）を選ぶ / 写真のトーンを黒×ゴールド系にCSS filterで調整</div>
   </div>
 
   <div class="img-item">
-    <h4>◆ S5 Features 施術室・スタッフ・カウンセリング 写真3枚</h4>
-    <div class="usage">用途: 各Featureの左/右ビジュアル / 各600×450px</div>
-    <div class="prompt-block">Three professional interior photographs of a luxury private mens beauty salon in Tokyo Shibuya:
-
-1. MINIMAL PRIVATE TREATMENT ROOM:
-Empty elegant treatment room, single black leather recliner chair, warm subtle spot lighting, dark wood and marble surfaces, gold accent details, mist of professional equipment in background, no people, 8K architectural photography, Wallpaper magazine aesthetic.
-
-2. PROFESSIONAL FEMALE ESTHETICIAN:
-Japanese woman in her late 20s wearing crisp white medical uniform, calm professional expression, holding professional laser device, warm natural lighting, no face of client visible, shot at angle to show equipment detail, documentary photography style.
-
-3. CONSULTATION SCENE:
-Two people at a dark wood consultation desk, showing hands only holding pen and form, soft focus, warm desk lamp lighting, premium stationery visible, confidential atmosphere, editorial photography.
-
-All images: deep blacks, warm gold highlights, cinematic color grading, shot on Hasselblad X2D, shallow depth of field, no text, no logos, no watermark</div>
-    <div class="prompt-tips">Tips: 顔全体が写らない構図でモデル依存を下げる / 3枚トーンを揃える</div>
+    <h4>◆ S6 Before/After — 実写必須</h4>
+    <div class="usage">用途: スライダーの比較画像 / 各600×600px以上</div>
+    <div class="free-source">
+      <strong>ルール</strong>: <strong>実データのみ使用。AI生成・フリー素材の顔写真は使わない。</strong><br>
+      運用方法:
+      <ul style="margin:6px 0 0 18px;">
+        <li>サロンで許諾付きBefore/After写真を収集（最優先）</li>
+        <li>集まるまでは「症例写真準備中」暫定プレースホルダ</li>
+        <li>個人特定されないよう口周りだけの切り抜き推奨</li>
+      </ul>
+    </div>
   </div>
 
   <div class="img-item">
-    <h4>◆ S7 Voice 顔写真 × 3（または シルエット）</h4>
-    <div class="usage">用途: 体験談カード / 各100×100px円形</div>
-    <div class="prompt-block">Three photorealistic portrait photographs of distinguished Japanese men, professional headshot style:
-
-1. Age 48, business executive appearance, well-groomed short dark hair with slight graying, confident warm smile, dark navy suit, clean-shaven perfect jawline, office bokeh background.
-
-2. Age 52, successful self-employed entrepreneur appearance, grey hair styled naturally, natural relaxed smile, casual elegant navy sweater, cafe bokeh background.
-
-3. Age 45, professional lawyer appearance, sharp dark hair, thoughtful serious expression, charcoal suit, library bokeh background.
-
-All portraits: shot on Canon R5 85mm f/1.4, natural daylight from window, editorial corporate photography, clean clear skin, no beard, documentary authenticity, 8K, no text, no watermark</div>
-    <div class="prompt-tips">Tips: 本物のお客様写真が理想。生成画像使用時は「※本人確認済み写真ではなくイメージです」注記必須</div>
+    <h4>◆ S7 流れ アイコン×4 — SVG or soco-st.com</h4>
+    <div class="usage">用途: 4ステップの装飾アイコン / 各40×40px</div>
+    <div class="free-source">
+      <strong>推奨</strong>: <a href="https://soco-st.com/" target="_blank">soco-st.com</a> からシンプルなラインアイコンを取得してbase64埋め込み<br>
+      検索: 「スマホ」「握手」「光」「葉」
+    </div>
   </div>
 
   <div class="img-item">
-    <h4>◆ S8 Flow アイコン × 4</h4>
-    <div class="usage">用途: 4ステップアイコン / 各40×40px</div>
-    <div class="prompt-block">Minimal flat line icons of four steps: (1) smartphone message bubble for LINE reservation, (2) handshake or consultation chat for counseling, (3) a subtle laser/light device for treatment, (4) a plant leaf with water drop for aftercare, gold color #c9a84c on transparent background, consistent 2px stroke, geometric premium design, no text</div>
-    <div class="prompt-tips">Tips: soco-st.com の「スマホ」「握手」「医療」「葉」でも代替可</div>
-  </div>
-
-  <div class="img-item">
-    <h4>◆ S10 Closing 背景</h4>
-    <div class="usage">用途: クロージング背景 / 1920×600px</div>
-    <div class="prompt-block">Dark abstract cinematic background, deep black with subtle warm gold light emanating from center, like a spotlight on stage, grain texture from analog film, Kodak Portra 800 aesthetic, no objects, no people, minimal geometric composition, luxury perfume advertisement background quality, 8K, no text</div>
-    <div class="prompt-tips">Tips: コピー「白髪になる前に、動け。」を浮かび上がらせるための静謐な背景</div>
+    <h4>◆ S9 クロージング背景 — AI生成可（任意）</h4>
+    <div class="usage">用途: クロージング背景 / 1920×600px / テクスチャ</div>
+    <div class="prompt-block">Dark minimalist cinematic background texture, deep black with subtle warm gold radial light emanating from center like a stage spotlight, analog film grain texture (Kodak Portra 800 aesthetic), no objects, no people, luxury perfume advertisement background quality, 8K, no text, no logos</div>
+    <div class="prompt-tips">Tips: シンプルなradial gradientでCSSで代替も可能（コスト削減）</div>
   </div>
 
 </section>
@@ -1054,46 +877,50 @@ All portraits: shot on Canon R5 85mm f/1.4, natural daylight from window, editor
     <div class="section-num">!</div>
     <div>
       <div class="section-title-main">制作時の注意事項</div>
-      <div class="section-title-sub">CRITICAL NOTES</div>
+      <div class="section-title-sub">— CRITICAL NOTES —</div>
     </div>
   </div>
   <div class="section-body">
-    <h3>Meta広告LPの審査対策</h3>
+    <h3>セクション境界を曖昧にする実装テクニック</h3>
     <ul>
-      <li>画像内の文字は20%以下に抑える（テキスト化優先）</li>
-      <li>医療的効果の断定表現は避ける（「永久脱毛」は機器メーカー定義に準拠）</li>
-      <li>Before/Afterは「個人差」明記＋医療広告ガイドライン準拠</li>
+      <li><strong>背景色の連続性</strong>: 全セクションを黒 (#0d0d0d ~ #1a1a1a) で繋ぎ、明確な「区切り線」は使わない</li>
+      <li><strong>オーバーラップ配置</strong>: 前セクションの写真・装飾が次セクションに少しはみ出す</li>
+      <li><strong>スクロール連動フェードイン</strong>: `IntersectionObserver` で要素が見えたら opacity: 0→1, translateY: 30px→0</li>
+      <li><strong>見出しも小さく</strong>: セクションごとの大きなH2見出しを置かず、本文が見出しとして機能する</li>
+    </ul>
+
+    <h3>Meta広告LP審査対策</h3>
+    <ul>
+      <li>画像内の文字比率は20%以下</li>
+      <li>「永久脱毛」は機器メーカー定義に準拠して使用</li>
+      <li>Before/Afterは「個人差あり」明記・医療広告ガイドライン準拠</li>
       <li>「100%」「絶対」などの断定語は使用しない</li>
     </ul>
 
-    <h3>コピーのトーン統一</h3>
+    <h3>AI感排除チェックリスト</h3>
     <ul>
-      <li>見出しは明朝・体言止め or 短い命令形で重厚感</li>
-      <li>本文はですます調・丁寧だが冗長でない</li>
-      <li>キラーワード「最後」「今」「後悔」「10年後」を戦略的に配置</li>
+      <li>☐ Heroのモデル写真に「Hasselblad / 80mm / f/2.8」等の撮影指定が入っているか</li>
+      <li>☐ 小画像はすべてフリー素材からの実写になっているか</li>
+      <li>☐ 顧客の声・事例に固有情報（年齢・職業・回数）が入っているか</li>
+      <li>☐ 手書き・アナログ装飾を使っていないか（真面目基調のため）</li>
+      <li>☐ セクションタイトルにメタ英語ラベル（PAIN POINTS等）が残っていないか</li>
+      <li>☐ 番号「01/02/03」が小さく・中身の文章が主役になっているか</li>
     </ul>
 
-    <h3>測定可能性</h3>
+    <h3>A/Bテスト候補</h3>
     <ul>
-      <li>CTAは全て `data-cta="..."` 属性でタグ分類</li>
-      <li>Meta Pixel / GA4 対応のイベントマーク設計</li>
-      <li>A/Bテスト候補: Hero訴求軸（白髪ラスト vs 印象改善）/ 料金表示（¥5,980単体 vs 他プラン併記）</li>
-    </ul>
-
-    <h3>AI感排除のための具体策</h3>
-    <ul>
-      <li>生成画像には必ず「撮影設定（カメラ名・レンズ・絞り）」を指示 → AI感が減る</li>
-      <li>モデル写真は「salt-and-pepper hair」「late 40s〜early 50s」で訴求軸と連動</li>
-      <li>数字・固有情報（年齢・職業・通院回数）で AI が苦手な具体性を確保</li>
-      <li>手書き要素は一切使わない（真面目基調の案件のため）</li>
+      <li>Hero訴求軸: 「最後の決断だ」vs 「10年後に後悔させない」</li>
+      <li>料金表示位置: S5中盤 vs S6直後（Before/After後）</li>
+      <li>Before/Afterの部位順: 口周り先頭 vs 顎先頭</li>
     </ul>
   </div>
 </section>
 
 <!-- ============ FOOTER ============ -->
 <div style="text-align:center;padding:40px 20px;color:var(--spec-text-muted);font-size:12px;">
-  &amp;N 髭脱毛LP Spec v1.0 · 2026-04-15<br>
-  Next: レビュー → OK取得 → lp-generator で実装 → GitHub Pages 公開
+  &amp;N 髭脱毛LP Spec v2.0 · 2026-04-15<br>
+  Changes in v2: Header removed / Hero=1-image / Meta labels removed / Numbers de-emphasized / Phone CTA removed / Before-After slider / Free stock first<br>
+  Next: レビュー → OK取得 → lp-generator で実装
 </div>
 
 </div>
