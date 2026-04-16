@@ -3,48 +3,1339 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="robots" content="noindex">
-<title>髭脱毛LP（制作中）| Private Salon &N</title>
+<meta name="description" content="白髪が増え始めた今だけが、永久脱毛ができる最後のタイミング。渋谷・男性専門脱毛サロン &N の髭脱毛。完全個室・女性スタッフ対応・初回¥5,980。">
+<title>髭脱毛 | これが、男の最後の決断だ。Private Salon &amp;N 渋谷</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@400;700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
-    background: #0d0d0d;
-    color: #e8e8e8;
-    min-height: 100vh;
-    display: grid;
-    place-items: center;
-    padding: 60px 24px;
-    line-height: 1.7;
+  :root {
+    --bg: #0a0a0a;
+    --bg-2: #111;
+    --bg-3: #1a1a1a;
+    --gold: #c9a84c;
+    --gold-soft: #b89843;
+    --text: #f0ede5;
+    --text-mid: #b5b0a3;
+    --text-muted: #7a7467;
+    --line-green: #06c755;
+    --line-green-dark: #05a648;
   }
-  main { max-width: 640px; text-align: center; }
-  .badge {
-    display: inline-block;
-    background: #c9a84c;
-    color: #1a1a1a;
-    font-size: 12px;
-    font-weight: 800;
-    padding: 4px 14px;
-    border-radius: 4px;
-    letter-spacing: 1px;
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.9;
+    overflow-x: hidden;
+    font-feature-settings: "palt";
+    letter-spacing: 0.03em;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; text-decoration: none; }
+
+  /* ===== Typography ===== */
+  .serif { font-family: 'Noto Serif JP', serif; font-weight: 900; }
+  .eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .gold { color: var(--gold); }
+
+  /* ===== Reveal animation ===== */
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 1s cubic-bezier(.25,.46,.45,.94), transform 1s cubic-bezier(.25,.46,.45,.94); }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+
+  /* ========================================================
+     S1: HERO
+     ======================================================== */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+    background: var(--bg);
+  }
+  .hero__logo {
+    position: absolute;
+    top: 28px;
+    left: 28px;
+    z-index: 3;
+    font-family: 'Noto Serif JP', serif;
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+  }
+  .hero__logo small {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 9px;
+    color: var(--text-muted);
+    letter-spacing: 2.5px;
+    font-weight: 400;
+    margin-top: 2px;
+  }
+  .hero__image {
+    position: absolute;
+    inset: 0;
+    background-image: url('assets/hero.png');
+    background-size: cover;
+    background-position: center top;
+    z-index: 1;
+  }
+  .hero__gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(10,10,10,0.1) 0%, rgba(10,10,10,0.1) 40%, rgba(10,10,10,0.85) 80%, rgba(10,10,10,1) 100%);
+    z-index: 2;
+  }
+  .hero__content {
+    position: relative;
+    z-index: 3;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 24px 56px;
+    text-align: center;
+  }
+  .hero__eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    text-transform: uppercase;
+    font-weight: 600;
     margin-bottom: 24px;
   }
-  h1 { font-size: 32px; font-weight: 800; margin-bottom: 16px; color: #fff; }
-  p { color: #888; margin-bottom: 24px; }
-  a { color: #c9a84c; text-decoration: none; }
-  a:hover { text-decoration: underline; }
+  .hero__headline {
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 900;
+    font-size: clamp(38px, 9vw, 68px);
+    line-height: 1.25;
+    color: var(--text);
+    letter-spacing: 0.02em;
+    margin-bottom: 20px;
+  }
+  .hero__headline span { color: var(--gold); }
+  .hero__sub {
+    font-size: clamp(13px, 3.5vw, 16px);
+    color: var(--text-mid);
+    line-height: 1.9;
+    margin-bottom: 36px;
+    font-weight: 400;
+  }
+  .hero__cta { display: inline-flex; }
+
+  /* ===== LINE Button ===== */
+  .btn-line {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: var(--line-green);
+    color: #fff;
+    padding: 18px 36px;
+    border-radius: 999px;
+    font-size: 15px;
+    font-weight: 700;
+    box-shadow: 0 8px 24px rgba(6,199,85,0.35), 0 0 0 1px rgba(255,255,255,0.1) inset;
+    transition: transform .2s, box-shadow .2s;
+    letter-spacing: 0.02em;
+    min-width: 280px;
+  }
+  .btn-line:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(6,199,85,0.45), 0 0 0 1px rgba(255,255,255,0.1) inset; }
+  .btn-line::after { content: "→"; font-size: 16px; }
+  .btn-line .line-ico {
+    width: 22px; height: 22px;
+    background: #fff;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--line-green);
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 10px;
+  }
+
+  /* ========================================================
+     S2: 共感メッセージ
+     ======================================================== */
+  .s-message {
+    background: var(--bg);
+    padding: 120px 24px;
+    text-align: center;
+    position: relative;
+  }
+  .s-message__inner { max-width: 720px; margin: 0 auto; }
+  .s-message__eye {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 28px;
+  }
+  .s-message__eye::before, .s-message__eye::after {
+    content: "";
+    display: inline-block;
+    width: 24px;
+    height: 1px;
+    background: var(--gold);
+    vertical-align: middle;
+    margin: 0 12px;
+  }
+  .s-message__headline {
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 900;
+    font-size: clamp(32px, 7vw, 52px);
+    line-height: 1.35;
+    margin-bottom: 40px;
+  }
+  .s-message__headline span { color: var(--gold); }
+  .s-message__body {
+    font-size: 15px;
+    color: var(--text-mid);
+    line-height: 2.1;
+    margin-bottom: 8px;
+  }
+  .s-message__body strong { color: var(--text); font-weight: 700; }
+  .s-message__note {
+    margin-top: 32px;
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 1.5px;
+  }
+
+  /* ========================================================
+     S3: 3つの痛み
+     ======================================================== */
+  .s-pain {
+    background: linear-gradient(to bottom, var(--bg) 0%, var(--bg-2) 100%);
+    padding: 100px 24px 120px;
+  }
+  .s-pain__eye {
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--text-muted);
+    margin-bottom: 70px;
+    font-weight: 600;
+  }
+  .s-pain__eye::before, .s-pain__eye::after {
+    content: "";
+    display: inline-block;
+    width: 32px;
+    height: 1px;
+    background: var(--text-muted);
+    vertical-align: middle;
+    margin: 0 16px;
+  }
+  .pain-grid {
+    max-width: 1040px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .pain-card {
+    background: var(--bg-3);
+    border: 1px solid #252525;
+    padding: 40px 30px;
+    border-radius: 4px;
+    position: relative;
+    transition: transform .4s, border-color .4s;
+  }
+  .pain-card--last {
+    border-color: var(--gold);
+    box-shadow: 0 0 32px rgba(201,168,76,0.08);
+  }
+  .pain-card:hover { transform: translateY(-4px); }
+  .pain-card__num {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 24px;
+  }
+  .pain-card--last .pain-card__num { color: var(--gold); }
+  .pain-card__title {
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 900;
+    font-size: 22px;
+    line-height: 1.5;
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+  .pain-card__line {
+    width: 32px;
+    height: 1px;
+    background: var(--gold);
+    margin-bottom: 20px;
+  }
+  .pain-card__body {
+    font-size: 13px;
+    color: var(--text-mid);
+    line-height: 2;
+  }
+
+  /* ========================================================
+     S4: 選ばれる理由
+     ======================================================== */
+  .s-reasons {
+    background: var(--bg-2);
+    padding: 100px 24px 120px;
+  }
+  .s-reasons__head {
+    text-align: center;
+    margin-bottom: 80px;
+  }
+  .s-reasons__eye {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+  .s-reasons__eye::before, .s-reasons__eye::after {
+    content: "";
+    display: inline-block;
+    width: 32px;
+    height: 1px;
+    background: var(--text-muted);
+    vertical-align: middle;
+    margin: 0 16px;
+  }
+  .reasons-wrap { max-width: 1040px; margin: 0 auto; }
+  .reason-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+    margin-bottom: 96px;
+  }
+  .reason-row:last-child { margin-bottom: 0; }
+  .reason-row--reverse .reason-row__visual { order: 2; }
+  .reason-row__visual {
+    background: var(--bg-3);
+    aspect-ratio: 5/4;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .reason-row__visual-inner {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  .reason-row__visual-icon {
+    width: 80px; height: 80px;
+    opacity: 0.6;
+  }
+  .reason-row__visual-label {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    font-weight: 600;
+  }
+  .reason-row__text { padding: 16px 0; }
+  .reason-row__num {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 18px;
+  }
+  .reason-row__title {
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 900;
+    font-size: clamp(24px, 4.5vw, 32px);
+    line-height: 1.45;
+    margin-bottom: 22px;
+    letter-spacing: 0.01em;
+  }
+  .reason-row__line {
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+    margin-bottom: 22px;
+  }
+  .reason-row__body {
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 2.1;
+  }
+
+  /* ========================================================
+     S5: 料金
+     ======================================================== */
+  .s-price {
+    background: var(--bg);
+    padding: 120px 24px;
+    text-align: center;
+    position: relative;
+  }
+  .s-price__inner { max-width: 780px; margin: 0 auto; }
+  .s-price__headline {
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 900;
+    font-size: clamp(28px, 6vw, 42px);
+    line-height: 1.4;
+    margin-bottom: 60px;
+  }
+  .s-price__headline span { color: var(--gold); }
+
+  .price-card {
+    background: var(--bg-3);
+    border: 1px solid var(--gold);
+    padding: 48px 32px;
+    border-radius: 4px;
+    position: relative;
+    box-shadow: 0 0 48px rgba(201,168,76,0.12);
+  }
+  .price-card__badge {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--bg);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 6px 18px;
+    letter-spacing: 2px;
+    margin-bottom: 28px;
+  }
+  .price-card__label {
+    font-size: 16px;
+    color: var(--text-mid);
+    margin-bottom: 14px;
+    font-weight: 500;
+  }
+  .price-card__amount {
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 900;
+    font-size: clamp(56px, 14vw, 88px);
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 10px;
+    letter-spacing: -0.02em;
+  }
+  .price-card__amount small {
+    font-size: 0.35em;
+    color: var(--text-muted);
+    font-weight: 400;
+    margin-left: 8px;
+    letter-spacing: 0;
+  }
+  .price-card__note {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 12px;
+    margin-bottom: 32px;
+    letter-spacing: 0.5px;
+  }
+  .price-card__trust {
+    border-top: 1px solid #2a2a2a;
+    padding-top: 28px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    font-size: 11px;
+    color: var(--text-mid);
+    letter-spacing: 1px;
+  }
+  .price-card__trust div::before {
+    content: "◆";
+    color: var(--gold);
+    margin-right: 6px;
+    font-size: 8px;
+  }
+  .price-other {
+    margin-top: 40px;
+    font-size: 12px;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+  }
+  .price-other-list {
+    margin-top: 18px;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    font-size: 12px;
+    color: var(--text-mid);
+  }
+  .price-other-list span.p { color: var(--gold); font-weight: 700; margin-left: 6px; }
+  .s-price__cta { margin-top: 48px; }
+
+  /* ========================================================
+     S6: Before/After Slider
+     ======================================================== */
+  .s-beforeafter {
+    background: linear-gradient(to bottom, var(--bg) 0%, var(--bg-2) 100%);
+    padding: 100px 24px 120px;
+  }
+  .s-beforeafter__head {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+  .s-beforeafter__eye {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 24px;
+    display: inline-block;
+  }
+  .s-beforeafter__title {
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 900;
+    font-size: clamp(28px, 6vw, 42px);
+    line-height: 1.4;
+  }
+  .s-beforeafter__title span { color: var(--gold); }
+
+  .ba-slider {
+    max-width: 640px;
+    margin: 0 auto;
+    position: relative;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    border-radius: 4px;
+    user-select: none;
+    touch-action: none;
+    cursor: ew-resize;
+    background: var(--bg-3);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  }
+  .ba-slider img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+  }
+  .ba-slider__after-wrap {
+    position: absolute;
+    inset: 0;
+    width: 50%;
+    overflow: hidden;
+    transition: width 0s;
+  }
+  .ba-slider__after-wrap img {
+    width: 200%; /* show full after image inside the clipped wrap (since wrap is % of container) */
+  }
+  /* Actually for proper slider we use clip-path approach */
+  .ba-slider__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .ba-slider__img--after { clip-path: inset(0 50% 0 0); transition: clip-path 0s; }
+  .ba-slider__divider {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 3px;
+    background: var(--gold);
+    transform: translateX(-50%);
+    pointer-events: none;
+    z-index: 3;
+    box-shadow: 0 0 20px rgba(201,168,76,0.6);
+  }
+  .ba-slider__handle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 52px; height: 52px;
+    background: var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--bg);
+    font-size: 18px;
+    font-weight: 900;
+    pointer-events: none;
+    z-index: 4;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  }
+  .ba-slider__label {
+    position: absolute;
+    top: 18px;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    font-weight: 700;
+    background: rgba(10,10,10,0.75);
+    color: #fff;
+    padding: 6px 14px;
+    border-radius: 2px;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .ba-slider__label--before { left: 18px; }
+  .ba-slider__label--after { right: 18px; color: var(--gold); border: 1px solid var(--gold); }
+  .ba-caption {
+    text-align: center;
+    margin-top: 28px;
+    font-size: 12px;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+  }
+  .ba-guide {
+    text-align: center;
+    margin-top: 18px;
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 2px;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+  }
+
+  /* ========================================================
+     S7: 流れ
+     ======================================================== */
+  .s-flow {
+    background: var(--bg-2);
+    padding: 100px 24px 120px;
+  }
+  .s-flow__head { text-align: center; margin-bottom: 64px; }
+  .s-flow__eye {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 24px;
+    display: inline-block;
+  }
+  .s-flow__title {
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 900;
+    font-size: clamp(28px, 6vw, 40px);
+    line-height: 1.4;
+  }
+  .flow-grid {
+    max-width: 1040px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    position: relative;
+  }
+  .flow-grid::before {
+    content: "";
+    position: absolute;
+    top: 30px;
+    left: 12%;
+    right: 12%;
+    height: 1px;
+    background: repeating-linear-gradient(to right, var(--gold) 0, var(--gold) 4px, transparent 4px, transparent 10px);
+    opacity: 0.4;
+    z-index: 0;
+  }
+  .flow-step { text-align: center; position: relative; z-index: 1; }
+  .flow-step__circle {
+    width: 60px; height: 60px;
+    border-radius: 50%;
+    background: var(--bg-2);
+    border: 2px solid var(--gold);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Noto Serif JP', serif;
+    font-size: 20px;
+    font-weight: 900;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+  .flow-step__title {
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 900;
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: var(--text);
+  }
+  .flow-step__body {
+    font-size: 12px;
+    color: var(--text-mid);
+    line-height: 1.9;
+    margin-bottom: 10px;
+  }
+  .flow-step__time {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+
+  /* ========================================================
+     S8: FAQ
+     ======================================================== */
+  .s-faq {
+    background: var(--bg);
+    padding: 100px 24px 120px;
+  }
+  .s-faq__head { text-align: center; margin-bottom: 56px; }
+  .s-faq__eye {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 24px;
+    display: inline-block;
+  }
+  .s-faq__title {
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 900;
+    font-size: clamp(28px, 6vw, 40px);
+  }
+  .faq-list { max-width: 780px; margin: 0 auto; }
+  .faq-item {
+    border-bottom: 1px solid #252525;
+  }
+  .faq-q {
+    display: grid;
+    grid-template-columns: 32px 1fr 24px;
+    gap: 16px;
+    align-items: center;
+    padding: 24px 8px;
+    cursor: pointer;
+    transition: color .2s;
+  }
+  .faq-q:hover { color: var(--gold); }
+  .faq-q__icon {
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 900;
+    font-size: 18px;
+    color: var(--gold);
+  }
+  .faq-q__text {
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.6;
+  }
+  .faq-q__arrow {
+    color: var(--gold);
+    font-size: 16px;
+    transition: transform .3s;
+  }
+  .faq-item.open .faq-q__arrow { transform: rotate(45deg); }
+  .faq-a {
+    display: none;
+    padding: 0 8px 28px 56px;
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 2;
+  }
+  .faq-a::before {
+    content: "A";
+    position: absolute;
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 900;
+    color: var(--gold);
+    margin-left: -40px;
+    font-size: 18px;
+  }
+  .faq-item.open .faq-a { display: block; position: relative; }
+
+  /* ========================================================
+     S9: クロージング
+     ======================================================== */
+  .s-closing {
+    position: relative;
+    padding: 140px 24px 140px;
+    text-align: center;
+    overflow: hidden;
+    background: var(--bg);
+  }
+  .s-closing__bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('assets/closing.png');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.8;
+    z-index: 1;
+  }
+  .s-closing__content {
+    position: relative;
+    z-index: 2;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .s-closing__eye {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 32px;
+    display: inline-block;
+  }
+  .s-closing__headline {
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 900;
+    font-size: clamp(40px, 9vw, 64px);
+    line-height: 1.35;
+    margin-bottom: 32px;
+  }
+  .s-closing__headline span { color: var(--gold); }
+  .s-closing__sub {
+    font-size: 15px;
+    color: var(--text-mid);
+    line-height: 2;
+    margin-bottom: 48px;
+  }
+
+  /* ========================================================
+     S10: Footer
+     ======================================================== */
+  .footer {
+    background: #050505;
+    padding: 64px 24px 40px;
+    border-top: 1px solid #1a1a1a;
+  }
+  .footer__inner {
+    max-width: 1040px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 48px;
+  }
+  .footer__brand {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+  }
+  .footer__brand small {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    color: var(--text-muted);
+    letter-spacing: 2px;
+    font-weight: 400;
+    margin-top: 4px;
+  }
+  .footer__tag {
+    font-size: 12px;
+    color: var(--text-mid);
+    margin-top: 16px;
+    line-height: 1.9;
+  }
+  .footer__info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    font-size: 12px;
+    color: var(--text-mid);
+    line-height: 1.9;
+  }
+  .footer__info-item dt {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .footer__links {
+    max-width: 1040px;
+    margin: 48px auto 0;
+    padding-top: 24px;
+    border-top: 1px solid #1a1a1a;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .footer__links a { color: var(--text-muted); margin-right: 20px; }
+  .footer__links a:hover { color: var(--gold); }
+
+  /* ========================================================
+     追従CTA (Mobile)
+     ======================================================== */
+  .fixed-cta {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+    background: linear-gradient(to top, rgba(10,10,10,0.98), rgba(10,10,10,0.85));
+    z-index: 100;
+    display: none;
+    backdrop-filter: blur(10px);
+    border-top: 1px solid #1a1a1a;
+  }
+  .fixed-cta.active { display: block; }
+  .fixed-cta .btn-line { width: 100%; min-width: 0; padding: 14px 24px; font-size: 14px; box-shadow: 0 4px 16px rgba(6,199,85,0.3); }
+
+  /* ========================================================
+     Responsive
+     ======================================================== */
+  @media (max-width: 880px) {
+    .pain-grid { grid-template-columns: 1fr; gap: 16px; }
+    .reason-row { grid-template-columns: 1fr; gap: 28px; margin-bottom: 72px; }
+    .reason-row--reverse .reason-row__visual { order: 0; }
+    .flow-grid { grid-template-columns: repeat(2, 1fr); gap: 40px 24px; }
+    .flow-grid::before { display: none; }
+    .footer__inner { grid-template-columns: 1fr; gap: 32px; }
+    .price-card__trust { grid-template-columns: 1fr; gap: 10px; text-align: left; }
+  }
+  @media (max-width: 520px) {
+    .hero__logo { top: 20px; left: 20px; font-size: 18px; }
+    .hero__content { padding: 0 20px 40px; }
+    .s-message, .s-pain, .s-reasons, .s-price, .s-beforeafter, .s-flow, .s-faq, .s-closing { padding-left: 20px; padding-right: 20px; }
+    .s-message, .s-closing { padding-top: 96px; padding-bottom: 96px; }
+    .price-card { padding: 40px 20px; }
+    .price-other-list { gap: 8px; flex-direction: column; }
+    .btn-line { min-width: 0; width: 100%; }
+    .hero__cta { width: 100%; }
+    body { padding-bottom: 84px; }
+    .fixed-cta { display: block; }
+  }
 </style>
 </head>
 <body>
-<main>
-  <div class="badge">COMING SOON</div>
-  <h1>髭脱毛LP 制作中</h1>
-  <p>仕様書作成・コピー設計・デザイン実装を進めています。<br>完成次第こちらに公開します。</p>
-  <p>
-    <a href="./spec.html">📋 仕様書を見る</a><br>
-    <br>
-    <a href="../">← Workspaceに戻る</a>
-  </p>
-</main>
+
+<!-- ================= S1: HERO ================= -->
+<section class="hero">
+  <div class="hero__image"></div>
+  <div class="hero__gradient"></div>
+  <div class="hero__logo">
+    &amp;N
+    <small>PRIVATE SALON · SHIBUYA</small>
+  </div>
+  <div class="hero__content">
+    <div class="hero__eyebrow">FOR MEN IN 40s &amp; 50s</div>
+    <h1 class="hero__headline">これが、男の<br><span>最後の決断</span>だ。</h1>
+    <p class="hero__sub">
+      白髪が増え始めた今だけが、<br>
+      永久脱毛ができる最後のタイミング。
+    </p>
+    <div class="hero__cta">
+      <a href="https://lin.ee/jLVyrgn" class="btn-line" target="_blank" rel="noopener" data-cta="hero">
+        <span class="line-ico">LINE</span>
+        <span>空き状況を確認する</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= S2: 共感メッセージ ================= -->
+<section class="s-message">
+  <div class="s-message__inner reveal">
+    <div class="s-message__eye">WHY NOW</div>
+    <h2 class="s-message__headline">白髪になってからでは、<br><span>もう遅い。</span></h2>
+    <p class="s-message__body">
+      光脱毛は、毛のメラニン色素に反応する技術。<br>
+      白髪になれば反応する色素がなくなり、<br>
+      永久脱毛の効果は得られなくなります。
+    </p>
+    <p class="s-message__body">
+      <strong>これは医学的な事実であり、時間で解決する問題ではありません。</strong>
+    </p>
+    <div class="s-message__note">— REF : 日本皮膚科学会 —</div>
+  </div>
+</section>
+
+<!-- ================= S3: 3つの痛み ================= -->
+<section class="s-pain">
+  <div class="s-pain__eye reveal">40代・50代だから抱える、3つの痛み</div>
+  <div class="pain-grid">
+    <article class="pain-card reveal">
+      <div class="pain-card__num">POINT 01</div>
+      <h3 class="pain-card__title">第一印象で、<br>損をしている。</h3>
+      <div class="pain-card__line"></div>
+      <p class="pain-card__body">
+        剃り残し、青ヒゲ、肌荒れ。取引先・部下・家族に与える「疲れた印象」は、毎日少しずつ信頼を削っていく。
+      </p>
+    </article>
+
+    <article class="pain-card reveal">
+      <div class="pain-card__num">POINT 02</div>
+      <h3 class="pain-card__title">毎朝10分。年60時間を、<br>髭剃りに。</h3>
+      <div class="pain-card__line"></div>
+      <p class="pain-card__body">
+        10年続ければ600時間。その時間と、蓄積された肌ダメージ。もう、取り戻せない。
+      </p>
+    </article>
+
+    <article class="pain-card pain-card--last reveal">
+      <div class="pain-card__num">POINT 03</div>
+      <h3 class="pain-card__title">あと数年で、<br>永久脱毛は不可能に。</h3>
+      <div class="pain-card__line"></div>
+      <p class="pain-card__body">
+        白髪が増え始めた今がラストチャンス。ここで動かなかった自分を、5年後に後悔する可能性は、極めて高い。
+      </p>
+    </article>
+  </div>
+</section>
+
+<!-- ================= S4: 選ばれる理由 ================= -->
+<section class="s-reasons">
+  <div class="s-reasons__head reveal">
+    <div class="s-reasons__eye">なぜ、&amp;N が選ばれるのか</div>
+  </div>
+
+  <div class="reasons-wrap">
+    <!-- reason 01 -->
+    <div class="reason-row reveal">
+      <div class="reason-row__visual">
+        <svg class="reason-row__visual-icon" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+          <rect x="14" y="18" width="52" height="44" rx="2" fill="none" stroke="#c9a84c" stroke-width="1.5"/>
+          <path d="M14 30 H66" stroke="#c9a84c" stroke-width="1"/>
+          <circle cx="40" cy="46" r="7" fill="none" stroke="#c9a84c" stroke-width="1.5"/>
+          <path d="M14 18 L40 6 L66 18" fill="none" stroke="#c9a84c" stroke-width="1.5"/>
+        </svg>
+        <span class="reason-row__visual-label">PRIVATE ROOM</span>
+      </div>
+      <div class="reason-row__text">
+        <div class="reason-row__num">REASON 01</div>
+        <h3 class="reason-row__title">完全個室 × 1名限定。<br>他の客と会うことは、ない。</h3>
+        <div class="reason-row__line"></div>
+        <p class="reason-row__body">
+          壁で仕切っただけの"個室"とは違う。施術時間中、サロンにいるのは貴方お一人だけ。受付から退店まで、人目を完全に遮断します。
+        </p>
+      </div>
+    </div>
+
+    <!-- reason 02 -->
+    <div class="reason-row reason-row--reverse reveal">
+      <div class="reason-row__visual">
+        <svg class="reason-row__visual-icon" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="40" cy="30" r="14" fill="none" stroke="#c9a84c" stroke-width="1.5"/>
+          <path d="M22 64 Q22 48 40 48 Q58 48 58 64" fill="none" stroke="#c9a84c" stroke-width="1.5"/>
+          <path d="M40 16 Q34 20 34 30" fill="none" stroke="#c9a84c" stroke-width="1"/>
+          <path d="M40 16 Q46 20 46 30" fill="none" stroke="#c9a84c" stroke-width="1"/>
+        </svg>
+        <span class="reason-row__visual-label">FEMALE STAFF</span>
+      </div>
+      <div class="reason-row__text">
+        <div class="reason-row__num">REASON 02</div>
+        <h3 class="reason-row__title">男性美容に特化した、<br>女性スタッフが担当。</h3>
+        <div class="reason-row__line"></div>
+        <p class="reason-row__body">
+          男性の肌質・毛質・ライフスタイルを熟知。カウンセリングから施術、アフターケアまで一貫して女性スタッフが担当。「ちゃんとわかってもらえる」安心感を。
+        </p>
+      </div>
+    </div>
+
+    <!-- reason 03 -->
+    <div class="reason-row reveal">
+      <div class="reason-row__visual">
+        <svg class="reason-row__visual-icon" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+          <rect x="16" y="24" width="48" height="34" rx="3" fill="none" stroke="#c9a84c" stroke-width="1.5"/>
+          <path d="M16 38 H64" stroke="#c9a84c" stroke-width="1"/>
+          <circle cx="54" cy="48" r="3" fill="#c9a84c"/>
+          <text x="40" y="22" font-family="serif" font-size="14" font-weight="900" fill="#c9a84c" text-anchor="middle">¥</text>
+        </svg>
+        <span class="reason-row__visual-label">NO CONTRACT</span>
+      </div>
+      <div class="reason-row__text">
+        <div class="reason-row__num">REASON 03</div>
+        <h3 class="reason-row__title">高額ローン、不要。<br>都度払いから始められる。</h3>
+        <div class="reason-row__line"></div>
+        <p class="reason-row__body">
+          1回ごとの都度払い、縛りなし、違約金なし、ローン契約なし。「試してから続けるか決める」が当たり前のサロンです。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= S5: 料金 ================= -->
+<section class="s-price">
+  <div class="s-price__inner reveal">
+    <h2 class="s-price__headline">
+      初回、髭脱毛 <span>¥5,980</span>。<br>
+      迷う理由が、見つからない。
+    </h2>
+
+    <div class="price-card">
+      <div class="price-card__badge">INITIAL OFFER</div>
+      <div class="price-card__label">髭脱毛（初回）</div>
+      <div class="price-card__amount">¥5,980<small>税込</small></div>
+      <div class="price-card__note">他店相場 ¥10,000〜15,000（※参考値）</div>
+      <div class="price-card__trust">
+        <div>表示価格が全て</div>
+        <div>都度払い可</div>
+        <div>強引な勧誘なし</div>
+      </div>
+    </div>
+
+    <div class="price-other">
+      OTHER PLANS — ご参考までに
+      <div class="price-other-list">
+        <div>全身 + 顔 + VIO <span class="p">¥42,800</span></div>
+        <div>全身 + 顔 <span class="p">¥32,800</span></div>
+        <div>全身 <span class="p">¥29,800</span></div>
+      </div>
+    </div>
+
+    <div class="s-price__cta">
+      <a href="https://lin.ee/jLVyrgn" class="btn-line" target="_blank" rel="noopener" data-cta="price">
+        <span class="line-ico">LINE</span>
+        <span>空き状況を確認する</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= S6: Before/After ================= -->
+<section class="s-beforeafter">
+  <div class="s-beforeafter__head reveal">
+    <div class="s-beforeafter__eye">BEFORE / AFTER</div>
+    <h2 class="s-beforeafter__title">動いた人は、<span>こう変わる。</span></h2>
+  </div>
+
+  <div class="ba-slider reveal" id="baSlider">
+    <img class="ba-slider__img ba-slider__img--before" src="assets/before.png" alt="Before">
+    <img class="ba-slider__img ba-slider__img--after" id="baAfter" src="assets/after.png" alt="After">
+    <span class="ba-slider__label ba-slider__label--before">BEFORE</span>
+    <span class="ba-slider__label ba-slider__label--after">AFTER</span>
+    <div class="ba-slider__divider" id="baDivider"></div>
+    <div class="ba-slider__handle" id="baHandle">⇄</div>
+  </div>
+
+  <div class="ba-guide">◀ ドラッグして比較 ▶</div>
+  <div class="ba-caption">※ 実際の症例写真です。効果には個人差があります。</div>
+</section>
+
+<!-- ================= S7: 流れ ================= -->
+<section class="s-flow">
+  <div class="s-flow__head reveal">
+    <div class="s-flow__eye">STEP BY STEP</div>
+    <h2 class="s-flow__title">予約から施術までの、<br>シンプルな4ステップ。</h2>
+  </div>
+  <div class="flow-grid">
+    <div class="flow-step reveal">
+      <div class="flow-step__circle">01</div>
+      <h4 class="flow-step__title">LINEで予約</h4>
+      <p class="flow-step__body">空き状況を確認、希望日時をメッセージで送るだけ</p>
+      <div class="flow-step__time">30 SEC</div>
+    </div>
+    <div class="flow-step reveal">
+      <div class="flow-step__circle">02</div>
+      <h4 class="flow-step__title">カウンセリング</h4>
+      <p class="flow-step__body">肌状態と悩みをヒアリング。勧誘は、しません</p>
+      <div class="flow-step__time">15 MIN</div>
+    </div>
+    <div class="flow-step reveal">
+      <div class="flow-step__circle">03</div>
+      <h4 class="flow-step__title">施術</h4>
+      <p class="flow-step__body">完全個室で髭脱毛。女性スタッフが丁寧に対応</p>
+      <div class="flow-step__time">20 MIN</div>
+    </div>
+    <div class="flow-step reveal">
+      <div class="flow-step__circle">04</div>
+      <h4 class="flow-step__title">アフターケア</h4>
+      <p class="flow-step__body">肌ケアと次回予約の相談（任意）。都度払い</p>
+      <div class="flow-step__time">10 MIN</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= S8: FAQ ================= -->
+<section class="s-faq">
+  <div class="s-faq__head reveal">
+    <div class="s-faq__eye">FREQUENTLY ASKED</div>
+    <h2 class="s-faq__title">よくある質問</h2>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item"><div class="faq-q"><div class="faq-q__icon">Q</div><div class="faq-q__text">痛みはどのくらいですか？</div><div class="faq-q__arrow">+</div></div><div class="faq-a">業界最高峰マシンの冷却機能で、輪ゴムで弾かれる程度です。多くの方に「想像より痛くない」と仰っていただいています。</div></div>
+    <div class="faq-item"><div class="faq-q"><div class="faq-q__icon">Q</div><div class="faq-q__text">何回で効果が出ますか？</div><div class="faq-q__arrow">+</div></div><div class="faq-a">個人差はありますが、多くの方が3〜5回で実感されます。髭の場合は8〜10回で永久的な減毛が目安です。</div></div>
+    <div class="faq-item"><div class="faq-q"><div class="faq-q__icon">Q</div><div class="faq-q__text">初回でローンや高額コースを勧められますか？</div><div class="faq-q__arrow">+</div></div><div class="faq-a">一切ありません。都度払い制のため、気に入らなければ初回のみでも結構です。</div></div>
+    <div class="faq-item"><div class="faq-q"><div class="faq-q__icon">Q</div><div class="faq-q__text">他のお客様と顔を合わせることは？</div><div class="faq-q__arrow">+</div></div><div class="faq-a">完全1名貸切制のため、来店から退店まで他のお客様と会うことは一切ありません。</div></div>
+    <div class="faq-item"><div class="faq-q"><div class="faq-q__icon">Q</div><div class="faq-q__text">白髪の髭にも効きますか？</div><div class="faq-q__arrow">+</div></div><div class="faq-a">白髪部分には光脱毛は反応しません。だからこそ、黒髪が残っている今がラストチャンスです。</div></div>
+    <div class="faq-item"><div class="faq-q"><div class="faq-q__icon">Q</div><div class="faq-q__text">当日キャンセルはできますか？</div><div class="faq-q__arrow">+</div></div><div class="faq-a">前日までのご連絡でキャンセル料は無料です。当日キャンセルは施術料金の50%を頂戴しております。</div></div>
+  </div>
+</section>
+
+<!-- ================= S9: クロージング ================= -->
+<section class="s-closing">
+  <div class="s-closing__bg"></div>
+  <div class="s-closing__content reveal">
+    <div class="s-closing__eye">YOUR LAST CHANCE</div>
+    <h2 class="s-closing__headline">白髪になる前に、<br><span>動け。</span></h2>
+    <p class="s-closing__sub">
+      10年後のあなたが、今日のあなたに感謝する。<br>
+      それだけの価値が、この一歩にはあります。
+    </p>
+    <a href="https://lin.ee/jLVyrgn" class="btn-line" target="_blank" rel="noopener" data-cta="closing">
+      <span class="line-ico">LINE</span>
+      <span>空き状況を確認する</span>
+    </a>
+  </div>
+</section>
+
+<!-- ================= S10: Footer ================= -->
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand-block">
+      <div class="footer__brand">&amp;N<small>PRIVATE SALON · SHIBUYA</small></div>
+      <p class="footer__tag">
+        すべての男性に、自信とキレイを。<br>
+        完全個室・女性スタッフによる、男性のための本格プライベートサロン。
+      </p>
+    </div>
+    <dl class="footer__info">
+      <div class="footer__info-item">
+        <dt>ADDRESS</dt>
+        <dd>東京都渋谷区<br>（詳細はLINEにてご案内）</dd>
+      </div>
+      <div class="footer__info-item">
+        <dt>CONTACT</dt>
+        <dd>03-6820-7859<br>LINE 24時間受付</dd>
+      </div>
+      <div class="footer__info-item">
+        <dt>HOURS</dt>
+        <dd>完全予約制<br>年中無休</dd>
+      </div>
+      <div class="footer__info-item">
+        <dt>WEB</dt>
+        <dd><a href="https://privatesalon-andn.com/" target="_blank" rel="noopener" style="color:var(--text-mid);">privatesalon-andn.com</a></dd>
+      </div>
+    </dl>
+  </div>
+  <div class="footer__links">
+    <div>
+      <a href="#">プライバシーポリシー</a>
+      <a href="#">特定商取引法に基づく表記</a>
+    </div>
+    <div>© 2026 Private Salon &amp;N</div>
+  </div>
+</footer>
+
+<!-- ================= 追従CTA (Mobile) ================= -->
+<div class="fixed-cta" id="fixedCta">
+  <a href="https://lin.ee/jLVyrgn" class="btn-line" target="_blank" rel="noopener" data-cta="fixed">
+    <span class="line-ico">LINE</span>
+    <span>空き状況を確認する</span>
+  </a>
+</div>
+
+<script>
+(function(){
+  'use strict';
+
+  // ===== Reveal on scroll =====
+  var revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    revealEls.forEach(function(el){ io.observe(el); });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  // ===== FAQ Accordion =====
+  document.querySelectorAll('.faq-item').forEach(function(item){
+    item.querySelector('.faq-q').addEventListener('click', function(){
+      item.classList.toggle('open');
+    });
+  });
+
+  // ===== Before/After Slider =====
+  var slider = document.getElementById('baSlider');
+  var afterImg = document.getElementById('baAfter');
+  var divider = document.getElementById('baDivider');
+  var handle = document.getElementById('baHandle');
+  var dragging = false;
+
+  function setPosition(percent) {
+    percent = Math.max(0, Math.min(100, percent));
+    afterImg.style.clipPath = 'inset(0 ' + (100 - percent) + '% 0 0)';
+    divider.style.left = percent + '%';
+    handle.style.left = percent + '%';
+  }
+
+  function getPercent(event) {
+    var rect = slider.getBoundingClientRect();
+    var x = (event.touches ? event.touches[0].clientX : event.clientX) - rect.left;
+    return (x / rect.width) * 100;
+  }
+
+  function startDrag(e) {
+    dragging = true;
+    slider.style.cursor = 'grabbing';
+    setPosition(getPercent(e));
+    e.preventDefault();
+  }
+  function moveDrag(e) {
+    if (!dragging) return;
+    setPosition(getPercent(e));
+    e.preventDefault();
+  }
+  function endDrag() {
+    dragging = false;
+    slider.style.cursor = 'ew-resize';
+  }
+
+  slider.addEventListener('mousedown', startDrag);
+  window.addEventListener('mousemove', moveDrag);
+  window.addEventListener('mouseup', endDrag);
+  slider.addEventListener('touchstart', startDrag, { passive: false });
+  window.addEventListener('touchmove', moveDrag, { passive: false });
+  window.addEventListener('touchend', endDrag);
+
+  // Initialize at 50%
+  setPosition(50);
+
+  // ===== Fixed CTA show/hide =====
+  var fixedCta = document.getElementById('fixedCta');
+  var heroEl = document.querySelector('.hero');
+  var footerEl = document.querySelector('.footer');
+  function toggleFixed() {
+    if (window.innerWidth > 520) { fixedCta.classList.remove('active'); return; }
+    var heroBottom = heroEl.offsetTop + heroEl.offsetHeight;
+    var footerTop = footerEl.offsetTop;
+    var scrollY = window.scrollY + window.innerHeight;
+    if (window.scrollY > heroBottom - 200 && scrollY < footerTop + 100) {
+      fixedCta.classList.add('active');
+    } else {
+      fixedCta.classList.remove('active');
+    }
+  }
+  window.addEventListener('scroll', toggleFixed, { passive: true });
+  window.addEventListener('resize', toggleFixed);
+  toggleFixed();
+})();
+</script>
+
 </body>
 </html>
