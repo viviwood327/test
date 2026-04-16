@@ -54,20 +54,24 @@
 
   /* ========================================================
      S1: HERO
+     PC (>=880px): 左コピー / 右画像 の2カラム
+     SP (<880px) : 画像フル + 下部コピーオーバーレイ
      ======================================================== */
   .hero {
     position: relative;
     min-height: 100vh;
     overflow: hidden;
     background: var(--bg);
+    display: grid;
+    grid-template-columns: 5fr 6fr;
   }
   .hero__logo {
     position: absolute;
-    top: 28px;
-    left: 28px;
-    z-index: 3;
+    top: 32px;
+    left: 40px;
+    z-index: 10;
     font-family: 'Noto Serif JP', serif;
-    font-size: 22px;
+    font-size: 24px;
     font-weight: 900;
     color: var(--gold);
     letter-spacing: 0.05em;
@@ -82,28 +86,42 @@
     margin-top: 2px;
   }
   .hero__image {
-    position: absolute;
-    inset: 0;
+    position: relative;
+    grid-column: 2;
     background-image: url('assets/hero.png');
     background-size: cover;
-    background-position: center top;
-    z-index: 1;
+    background-position: center 20%;
+    min-height: 100vh;
+  }
+  .hero__image::before {
+    /* 左端から黒フェード：画像とコピー領域の境界を溶かす */
+    content: "";
+    position: absolute;
+    top: 0; bottom: 0;
+    left: 0;
+    width: 30%;
+    background: linear-gradient(to right, var(--bg) 0%, transparent 100%);
+    z-index: 2;
   }
   .hero__gradient {
+    /* 下部のフェード（特にSPで機能） */
     position: absolute;
     inset: 0;
-    background: linear-gradient(to bottom, rgba(10,10,10,0.1) 0%, rgba(10,10,10,0.1) 40%, rgba(10,10,10,0.85) 80%, rgba(10,10,10,1) 100%);
-    z-index: 2;
+    background: linear-gradient(to bottom, transparent 60%, rgba(10,10,10,0.6) 100%);
+    z-index: 1;
+    pointer-events: none;
   }
   .hero__content {
     position: relative;
     z-index: 3;
-    min-height: 100vh;
+    grid-column: 1;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-    padding: 0 24px 56px;
-    text-align: center;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 80px 40px 80px 80px;
+    text-align: left;
+    min-height: 100vh;
   }
   .hero__eyebrow {
     font-family: 'Inter', sans-serif;
@@ -112,24 +130,49 @@
     color: var(--gold);
     text-transform: uppercase;
     font-weight: 600;
-    margin-bottom: 24px;
+    margin-bottom: 28px;
+    display: inline-block;
+  }
+  .hero__eyebrow::before {
+    content: "";
+    display: inline-block;
+    width: 32px;
+    height: 1px;
+    background: var(--gold);
+    vertical-align: middle;
+    margin-right: 14px;
   }
   .hero__headline {
     font-family: 'Noto Serif JP', serif;
     font-weight: 900;
-    font-size: clamp(38px, 9vw, 68px);
+    font-size: clamp(40px, 5vw, 68px);
     line-height: 1.25;
     color: var(--text);
     letter-spacing: 0.02em;
-    margin-bottom: 20px;
+    margin-bottom: 28px;
   }
   .hero__headline span { color: var(--gold); }
   .hero__sub {
-    font-size: clamp(13px, 3.5vw, 16px);
+    font-size: clamp(13px, 1.1vw, 16px);
     color: var(--text-mid);
-    line-height: 1.9;
+    line-height: 2;
     margin-bottom: 36px;
     font-weight: 400;
+  }
+  .hero__badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+    margin-bottom: 40px;
+    font-size: 12px;
+    color: var(--text-muted);
+    letter-spacing: 1.5px;
+  }
+  .hero__badges span::before {
+    content: "◆";
+    color: var(--gold);
+    margin-right: 6px;
+    font-size: 8px;
   }
   .hero__cta { display: inline-flex; }
 
@@ -902,6 +945,30 @@
      Responsive
      ======================================================== */
   @media (max-width: 880px) {
+    /* Hero: 2カラム解除 → 1枚絵+オーバーレイ */
+    .hero { display: block; }
+    .hero__image {
+      position: absolute;
+      inset: 0;
+      grid-column: initial;
+      min-height: 0;
+      background-position: center 10%;
+    }
+    .hero__image::before { display: none; }
+    .hero__gradient {
+      background: linear-gradient(to bottom, rgba(10,10,10,0.15) 0%, rgba(10,10,10,0.2) 45%, rgba(10,10,10,0.88) 78%, var(--bg) 100%);
+    }
+    .hero__content {
+      grid-column: initial;
+      padding: 0 24px 56px;
+      justify-content: flex-end;
+      align-items: center;
+      text-align: center;
+    }
+    .hero__eyebrow::before { display: none; }
+    .hero__headline { font-size: clamp(38px, 9vw, 56px); }
+    .hero__badges { justify-content: center; }
+
     .pain-grid { grid-template-columns: 1fr; gap: 16px; }
     .reason-row { grid-template-columns: 1fr; gap: 28px; margin-bottom: 72px; }
     .reason-row--reverse .reason-row__visual { order: 0; }
@@ -928,8 +995,6 @@
 
 <!-- ================= S1: HERO ================= -->
 <section class="hero">
-  <div class="hero__image"></div>
-  <div class="hero__gradient"></div>
   <div class="hero__logo">
     &amp;N
     <small>PRIVATE SALON · SHIBUYA</small>
@@ -939,14 +1004,23 @@
     <h1 class="hero__headline">これが、男の<br><span>最後の決断</span>だ。</h1>
     <p class="hero__sub">
       白髪が増え始めた今だけが、<br>
-      永久脱毛ができる最後のタイミング。
+      永久脱毛ができる最後のタイミング。<br>
+      "あのときやっておけばよかった" — そう後悔する前に。
     </p>
+    <div class="hero__badges">
+      <span>完全個室・1名限定</span>
+      <span>女性スタッフ専門対応</span>
+      <span>業界最高峰マシン導入</span>
+    </div>
     <div class="hero__cta">
       <a href="https://lin.ee/jLVyrgn" class="btn-line" target="_blank" rel="noopener" data-cta="hero">
         <span class="line-ico">LINE</span>
         <span>空き状況を確認する</span>
       </a>
     </div>
+  </div>
+  <div class="hero__image">
+    <div class="hero__gradient"></div>
   </div>
 </section>
 
